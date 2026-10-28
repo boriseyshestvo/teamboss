@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Тарифы — сервис удалённых ассистентов</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F3}
+a{color:#8A6536}a:hover{color:#121826}
+.sf{font-family:'Noto Serif Display',Georgia,'Times New Roman',serif}
+.glass{background:rgba(255,255,255,0.46);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,0.8);box-shadow:0 30px 80px -34px rgba(120,86,36,0.28),inset 0 1px 0 rgba(255,255,255,0.9)}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;font-family:'Manrope',system-ui,sans-serif;font-size:14px;font-weight:600;text-decoration:none;box-sizing:border-box;cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.2,1),background-color .25s,color .25s}
+.pill:hover{transform:translateY(-2px)}
+.p-dark{background:#121826;color:#FBF8F3;border:none;box-shadow:0 14px 28px -14px rgba(18,24,38,0.6)}
+.p-dark:hover{color:#FBF8F3}
+.p-light{background:#FBF8F3;color:#121826;border:none}
+.p-light:hover{color:#121826;background:#EAD9BD}
+.toggle{font-family:'Manrope',system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 12px;border-radius:999px;background:transparent;font-size:14px;font-weight:600;cursor:pointer;transition:background-color .25s}
+.toggle:hover{background:rgba(255,255,255,0.6)}
+.chev{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.close{font-family:'Manrope',system-ui,sans-serif;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(18,24,38,0.14);background:rgba(255,255,255,0.7);color:#121826;font-size:14px;font-weight:600;cursor:pointer}
+.close:hover{background:#FFFFFF}
+.dots li::marker{color:#AD7F45}
+@keyframes open{from{opacity:0;transform:translateY(-12px) scale(.99)}to{opacity:1;transform:none}}
+.open{animation:open .5s cubic-bezier(.2,.7,.2,1) both}
+.rowh:hover{background:rgba(255,255,255,0.45)}
+:focus-visible{outline:2px solid #8A6536;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.open{animation:none}.pill,.chev{transition:none}}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+
+<div aria-hidden="true" style="position: absolute; left: -240px; top: -140px; width: 880px; height: 880px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.72) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; right: -200px; top: 700px; width: 820px; height: 820px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 65%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 200px; top: 1700px; width: 980px; height: 980px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.5) 0%, rgba(214,178,120,0) 66%)"></div>
+
+<section id="tariffs" style="position: relative; flex-grow: 1; padding: 120px 96px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 80px; align-items: end; margin-bottom: 52px">
+<h2 class="sf" style="margin: 0; font-size: 76px; line-height: 1; font-weight: 400; letter-spacing: -0.015em">Тарифы</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3C4250">Во всех тарифах, кроме «Старта», количество задач не ограничено. Нажмите «Задачи в тарифе», чтобы увидеть, что можно передать.</p>
+</div>
+
+<div class="glass" style="border-radius: 36px; padding: 32px 32px 24px">
+
+<div style="display: grid; grid-template-columns: 290px repeat(4, minmax(0, 1fr)); gap: 12px; align-items: stretch">
+<div style="display: flex; flex-direction: column; justify-content: flex-end; padding: 0 8px 18px">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5B6170">Рабочее время — пн–пт, 9:00–18:00 по Москве</p>
+</div>
+<sc-for list="{{ heads }}" as="h" hint-placeholder-count="4">
+<div style="{{ h.box }}">
+<sc-if value="{{ h.hasBadge }}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; top: -13px; left: 22px; padding: 6px 12px; border-radius: 999px; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826; font-size: 12px; font-weight: 700; box-shadow: 0 8px 18px -8px rgba(140,98,40,0.7)">Рекомендуем</span>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="sf" style="{{ h.nameStyle }}">{{ h.name }}</span>
+<span style="{{ h.descStyle }}">{{ h.sub }}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span class="sf" style="{{ h.priceStyle }}">{{ h.price }}</span>
+<span style="{{ h.subStyle }}">₽ в месяц</span>
+</div>
+<a class="{{ h.btnClass }}" href="#apply">Выбрать</a>
+<button class="toggle" aria-expanded="{{ h.open }}" onClick="{{ h.toggle }}" style="{{ h.toggleStyle }}">Задачи в тарифе <svg class="chev" style="{{ h.chev }}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+</div>
+</sc-for>
+</div>
+
+<div style="position: relative; height: 0; z-index: 5">
+<sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="position: absolute; left: 0; right: 0; top: 16px; border-radius: 28px; padding: 40px; background: #FBF8F3; -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.95); box-shadow: 0 50px 100px -30px rgba(120,86,36,0.45), inset 0 1px 0 rgba(255,255,255,0.9)">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; margin-bottom: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p class="sf" style="margin: 0; font-size: 38px; line-height: 1.05">Что можно передать на тарифе <span style="font-style: italic; color: #AD7F45">«{{ openName }}»</span></p>
+<p style="margin: 0; font-size: 16px; color: #3C4250">{{ openLead }}</p>
+</div>
+<button class="close" onClick="{{ closePanel }}">Скрыть <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 40px">
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; padding-bottom: 12px; border-bottom: 1px solid rgba(173,127,69,0.4); font-size: 15px; font-weight: 700; color: #8A6536">{{ g.title }}</p>
+<ul class="dots" style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 9px; font-size: 15px; line-height: 1.5">
+<sc-for list="{{ g.items }}" as="li" hint-placeholder-count="5">
+<li>{{ li.t }}</li>
+</sc-for>
+</ul>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ hasNote }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 32px 0 0; padding: 18px 22px; border-radius: 16px; background: #F4ECDD; font-size: 15px; line-height: 1.6; color: #3C4250">{{ openNote }}</p>
+</sc-if>
+</div>
+</sc-if>
+</div>
+
+<div role="table" aria-label="Что входит в тарифы" style="margin-top: 16px">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="17">
+<div role="row" class="rowh" style="display: grid; grid-template-columns: 290px repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; min-height: 62px; border-top: 1px solid rgba(18,24,38,0.07); border-radius: 12px">
+<div role="rowheader" style="display: flex; flex-direction: column; gap: 3px; padding: 12px 8px">
+<span style="font-size: 15px; font-weight: 600">{{ r.p }}</span>
+<sc-if value="{{ r.hasHint }}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 12px; line-height: 1.4; color: #5B6170">{{ r.hint }}</span>
+</sc-if>
+</div>
+<sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="4">
+<div role="cell" style="{{ c.box }}">
+<sc-if value="{{ c.yes }}" hint-placeholder-val="{{ false }}">
+<span aria-label="Входит" style="width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826; box-shadow: 0 6px 14px -6px rgba(140,98,40,0.6)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+</sc-if>
+<sc-if value="{{ c.no }}" hint-placeholder-val="{{ false }}">
+<span aria-label="Не входит" style="width: 16px; height: 2px; border-radius: 2px; background: rgba(18,24,38,0.2)"></span>
+</sc-if>
+<sc-if value="{{ c.isText }}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 14px; font-weight: 600; line-height: 1.35">{{ c.t }}</span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div class="glass" style="border-radius: 24px; padding: 26px 30px; display: flex; gap: 18px; align-items: flex-start">
+<span class="sf" style="font-size: 34px; line-height: 1; font-style: italic; color: #AD7F45">+20%</span>
+<span style="font-size: 15px; line-height: 1.6; color: #3C4250">Каждый дополнительный пользователь, который ставит задачи в общий чат, — плюс 20% к стоимости тарифа. На «Старте» можно работать только одному.</span>
+</div>
+<div class="glass" style="border-radius: 24px; padding: 26px 30px; display: flex; gap: 18px; align-items: flex-start">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#AD7F45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+<span style="font-size: 15px; line-height: 1.6; color: #3C4250">Часы бухгалтера, юриста и специалиста по персоналу считаются по каждой задаче. Неиспользованные часы на следующий месяц не переносятся.</span>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2110}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: '' };
+  }
+  renderVals() {
+    const open = this.state.open;
+    const tariffs = [
+      { id: 'start', name: 'Старт', sub: 'Попробовать формат или закрыть нерегулярные задачи', price: '19 900', kind: 'light' },
+      { id: 'daily', name: 'Дейли', sub: 'Повседневные дела и небольшие бизнес-задачи', price: '29 900', kind: 'light' },
+      { id: 'biz', name: 'Бизнес', sub: 'Плотный поток задач и работа над проектами', price: '69 900', kind: 'dark' },
+      { id: 'bo', name: 'Бэк-офис', sub: 'Операционный офис без штата', price: '189 900', kind: 'gold' }
+    ];
+    const look = {
+      light: { bg: 'rgba(255,255,255,0.62)', border: 'rgba(255,255,255,0.95)', ink: '#121826', soft: '#5B6170', price: '#121826', btn: 'pill p-dark', tb: 'rgba(18,24,38,0.14)', shadow: '0 24px 50px -34px rgba(120,86,36,0.4)' },
+      dark: { bg: 'linear-gradient(165deg, #1D2434 0%, #121826 100%)', border: '#121826', ink: '#FBF8F3', soft: '#CDBFA8', price: '#E7CC9C', btn: 'pill p-light', tb: 'rgba(255,255,255,0.2)', shadow: '0 34px 70px -30px rgba(18,24,38,0.65)' },
+      gold: { bg: 'linear-gradient(160deg, #F4E6CB 0%, #E7CC9C 45%, #CFA86E 100%)', border: 'rgba(255,255,255,0.7)', ink: '#121826', soft: '#4A3F2E', price: '#121826', btn: 'pill p-dark', tb: 'rgba(18,24,38,0.22)', shadow: '0 34px 70px -30px rgba(140,98,40,0.6)' }
+    };
+    const heads = tariffs.map((t) => {
+      const isOpen = open === t.id;
+      const L = look[t.kind];
+      return {
+        name: t.name,
+        sub: t.sub,
+        price: t.price,
+        open: isOpen,
+        hasBadge: t.kind === 'dark',
+        toggle: () => this.setState({ open: isOpen ? '' : t.id }),
+        btnClass: L.btn,
+        box: 'position: relative; display: flex; flex-direction: column; gap: 18px; padding: 26px 22px 16px; border-radius: 24px; background: ' + L.bg + '; border: 1px solid ' + (isOpen ? '#AD7F45' : L.border) + '; box-shadow: ' + (isOpen ? '0 0 0 3px rgba(173,127,69,0.3), ' + L.shadow : L.shadow),
+        nameStyle: 'font-size: 30px; line-height: 1; color: ' + L.ink,
+        subStyle: 'font-size: 13px; line-height: 1.4; color: ' + L.soft,
+        descStyle: 'min-height: 55px; font-size: 13px; line-height: 1.4; color: ' + L.soft,
+        priceStyle: 'font-size: 40px; line-height: 1; color: ' + L.price,
+        toggleStyle: 'border: 1px solid ' + L.tb + '; color: ' + L.ink,
+        chev: 'transform: rotate(' + (isOpen ? '180' : '0') + 'deg)'
+      };
+    });
+
+    const Y = 'y', N = 'n';
+    const raw = [
+      { p: 'Личный ассистент', v: [Y, Y, Y, Y] },
+      { p: 'Договор и соглашение о неразглашении', v: [Y, Y, Y, Y] },
+      { p: 'Количество задач', v: ['15 часов в месяц', 'Без ограничений', 'Без ограничений', 'Без ограничений'] },
+      { p: 'Ответ на новую задачу', v: ['до 30 минут', 'до 30 минут', 'до 15 минут', 'до 15 минут'] },
+      { p: 'Задач в работе одновременно', h: 'остальные ждут в очереди по вашему приоритету', v: ['1', '1', '2', '5'] },
+      { p: 'Мелкие поручения параллельно', h: 'задачи до 15 минут, вне очереди', v: [N, N, Y, Y] },
+      { p: 'Задачи дольше 5 часов', v: ['в счёт часов', 'с доплатой', 'с доплатой', Y] },
+      { p: 'Трекеры задач и календари', h: 'Todoist, Google Календарь и аналоги', v: [Y, Y, Y, Y] },
+      { p: 'Рабочие системы компании', h: 'Битрикс24, amoCRM, Notion, Trello, Asana и аналоги', v: [N, N, Y, Y] },
+      { p: 'Бухгалтер, юрист, специалист по персоналу', v: [N, N, 'до 20 ч в месяц', 'до 40 ч в месяц'] },
+      { p: 'Рекрутер', v: [N, N, N, Y] },
+      { p: 'Персональный менеджер', v: [N, N, N, Y] },
+      { p: 'Вечера и выходные', h: 'срочные задачи', v: [N, N, 'до 2 в неделю', 'до 5 в неделю'] },
+      { p: 'Пользователей в тарифе', v: ['1', '1', '2', 'до 3'] },
+      { p: 'Дополнительный пользователь', v: [N, '+20%', '+20%', '+20%'] },
+      { p: 'Заморозка тарифа', v: [N, N, '1 неделя', '2 недели'] },
+      { p: 'Возврат за неотработанное время', v: [Y, Y, Y, Y] }
+    ];
+    const order = ['start', 'daily', 'biz', 'bo'];
+    const rows = raw.map((r) => ({
+      p: r.p,
+      hasHint: !!r.h,
+      hint: r.h || '',
+      cells: r.v.map((v, i) => ({
+        yes: v === Y,
+        no: v === N,
+        isText: v !== Y && v !== N,
+        t: v,
+        box: 'display: flex; align-items: center; min-height: 62px; padding: 8px 22px; box-sizing: border-box; border-radius: 12px; background: ' + (open === order[i] ? 'rgba(231,204,156,0.28)' : 'transparent')
+      }))
+    }));
+    const base = [
+      { title: 'Личные дела', items: ['Бронирование ресторанов', 'Билеты, отели и трансферы', 'Маршрут для отпуска', 'Сопровождение поездок', 'Запись к врачам и мастерам', 'Подарки и цветы', 'Покупки и доставка', 'Коммунальные платежи и штрафы', 'Поиск няни, репетитора, клининга'] },
+      { title: 'Почта и календарь', items: ['Разбор входящих писем', 'Ответы по шаблону', 'Ведение календаря', 'Планирование и переносы встреч', 'Напоминания о делах и днях рождения', 'Справка о человеке перед встречей'] },
+      { title: 'Поиск и организация', items: ['Сравнение цен и предложений', 'Подбор подрядчиков и услуг', 'Сбор отзывов о компаниях', 'Звонки и уточнения', 'Запись и переносы визитов'] },
+      { title: 'Документы и таблицы', items: ['Документы по шаблону', 'Коммерческие предложения', 'Договоры по шаблону', 'Подготовка презентаций', 'Таблицы учёта', 'Расшифровка голосовых и итоги встреч'] },
+      { title: 'Тексты и визуал', items: ['Копирайтинг', 'Создание изображений с помощью ИИ', 'Создание видео с помощью ИИ'] },
+      { title: 'Клиенты и подрядчики', items: ['Ответы клиентам', 'Контроль сроков подрядчиков', 'Сбор обратной связи', 'Описание вакансии'] },
+      { title: 'Трекеры задач', items: ['Задачи в Todoist, TickTick и аналогах', 'События в Google Календаре', 'Списки дел и напоминания'] }
+    ];
+    const sets = {
+      start: { name: 'Старт', lead: 'Все задачи «Дейли» — в пределах 15 часов работы в месяц', groups: base, note: '' },
+      daily: { name: 'Дейли', lead: 'Повседневные дела и небольшие бизнес-задачи без ограничений по количеству', groups: base, note: '' },
+      biz: {
+        name: 'Бизнес', lead: 'Всё из «Дейли», а также', note: '',
+        groups: [
+          { title: 'Рабочие системы', items: ['Сделки в Битрикс24 и amoCRM', 'Задачи в Trello, Notion, Asana', 'Обновление клиентских баз', 'Отчёты из рабочих систем'] },
+          { title: 'Деньги', items: ['Счета и акты', 'Контроль оплат', 'Сверка с подрядчиками'] },
+          { title: 'Проекты', items: ['Исследование рынка и конкурентов', 'Сводные отчёты', 'Организация мероприятий'] },
+          { title: 'Команда', items: ['Регламенты и инструкции', 'Кадровые документы', 'Первичный отбор кандидатов'] },
+          { title: 'Специалисты — до 20 часов', items: ['Консультация бухгалтера', 'Проверка договора юристом', 'Претензии и ответы на них', 'Проверка контрагентов'] }
+        ]
+      },
+      bo: {
+        name: 'Бэк-офис', lead: 'Всё из «Бизнеса», а также',
+        note: 'Бухгалтер в тарифе ведёт текущие задачи и консультирует. Полное ведение бухгалтерии обсуждается отдельно.',
+        groups: [
+          { title: 'Операционный офис', items: ['Документооборот', 'Закупки и поставщики', 'Контроль поручений в команде'] },
+          { title: 'Люди', items: ['Подбор персонала', 'Адаптация новых сотрудников', 'График отпусков'] },
+          { title: 'Бухгалтерия и право — до 40 часов', items: ['Первичные документы', 'Связь с вашей бухгалтерией', 'Договоры и претензии'] },
+          { title: 'Персональный менеджер', items: ['Следит за сроками по всем задачам', 'Готовит сводку по итогам недели', 'Помогает расставить приоритеты'] }
+        ]
+      }
+    };
+
+    const cur = sets[open];
+    return {
+      heads: heads,
+      rows: rows,
+      isOpen: !!cur,
+      openName: cur ? cur.name : '',
+      openLead: cur ? cur.lead : '',
+      groups: cur ? cur.groups.map((g) => ({ title: g.title, items: g.items.map((t) => ({ t: t })) })) : [],
+      hasNote: !!(cur && cur.note),
+      openNote: cur ? cur.note : '',
+      closePanel: () => this.setState({ open: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>

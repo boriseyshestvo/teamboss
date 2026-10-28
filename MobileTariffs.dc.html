@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Мобильная версия — тарифы</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F3}
+a{color:#8A6536}a:hover{color:#121826}
+.sf{font-family:'Noto Serif Display',Georgia,'Times New Roman',serif}
+.glass{background:rgba(255,255,255,0.5);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,0.85);box-shadow:0 24px 60px -30px rgba(120,86,36,0.3),inset 0 1px 0 rgba(255,255,255,0.9)}
+.btn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:0 10px 0 24px;box-sizing:border-box;border-radius:999px;background:#121826;color:#FBF8F3;font-family:'Manrope',system-ui,sans-serif;font-size:16px;font-weight:600;text-decoration:none;border:none;box-shadow:0 16px 32px -14px rgba(18,24,38,0.6);cursor:pointer;text-align:left}
+.btn:hover{color:#FBF8F3}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.arr{width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,0.14);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.btn-glass{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 24px;box-sizing:border-box;border-radius:999px;background:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#121826;font-family:'Manrope',system-ui,sans-serif;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+.btn-glass:hover{color:#121826}
+.h2{margin:0;font-family:'Noto Serif Display',Georgia,'Times New Roman',serif;font-size:38px;line-height:1.05;font-weight:400;letter-spacing:-0.01em}
+.it{font-style:italic;color:#AD7F45}
+.lead{margin:0;font-size:16px;line-height:1.6;color:#3C4250}
+.snap{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 28px;scrollbar-width:none;scroll-padding:0 20px}
+.snap::-webkit-scrollbar{display:none}
+.snap>*{scroll-snap-align:start;flex-shrink:0}
+.dots li::marker{color:#AD7F45}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.floaty{animation:floaty 5s ease-in-out infinite}
+@keyframes msgIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.msg{animation:msgIn .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes tdot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.tdot{width:6px;height:6px;border-radius:50%;background:#8A6536;display:inline-block;animation:tdot 1s ease-in-out infinite}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqr{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.marq{display:flex;align-items:center;width:max-content;animation:marq 36s linear infinite}
+.marqr{display:flex;align-items:center;width:max-content;animation:marqr 48s linear infinite}
+.marq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
+@keyframes open{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.open{animation:open .45s cubic-bezier(.2,.7,.2,1) both}
+.opt{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;text-align:left}
+.fld{font-family:'Manrope',system-ui,sans-serif;width:100%;box-sizing:border-box;min-height:52px;padding:13px 16px;border:1px solid rgba(18,24,38,0.14);border-radius:16px;background:rgba(255,255,255,0.8);color:#121826;font-size:16px;line-height:1.5}
+.fld:focus{outline:none;border-color:#AD7F45;box-shadow:0 0 0 3px rgba(173,127,69,0.2)}
+:focus-visible{outline:2px solid #8A6536;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.rise,.floaty,.marq,.marqr,.msg,.tdot,.open{animation:none}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; left: -200px; top: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 150px; top: 500px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.6) 0%, rgba(214,178,120,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: -200px; top: 1120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 150px; top: 1740px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: -200px; top: 2360px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.6) 0%, rgba(214,178,120,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 150px; top: 2980px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 66%)"></div>
+
+<section id="tariffs" style="position: relative; flex-grow: 1; padding: 56px 12px 40px; display: flex; flex-direction: column; gap: 18px">
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="h2" style="font-size: 46px">Тарифы</h2>
+<p class="lead">Во всех тарифах, кроме «Старта», количество задач не ограничено. Нажмите «Задачи в тарифе», чтобы увидеть, что можно передать.</p>
+</div>
+<sc-for list="{{ cards }}" as="t" hint-placeholder-count="4">
+<article style="{{ t.box }}">
+<sc-if value="{{ t.badge }}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; top: -12px; left: 22px; padding: 5px 12px; border-radius: 999px; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826; font-size: 12px; font-weight: 700; box-shadow: 0 8px 18px -8px rgba(140,98,40,0.7)">Рекомендуем</span>
+</sc-if>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 class="sf" style="{{ t.nameStyle }}">{{ t.name }}</h3>
+<span style="{{ t.subStyle }}">{{ t.sub }}</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0">
+<span class="sf" style="{{ t.priceStyle }}">{{ t.price }}</span>
+<span style="{{ t.subStyle }}">₽ в месяц</span>
+</div>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ t.feats }}" as="f" hint-placeholder-count="7">
+<li style="{{ f.row }}">
+<span style="{{ f.icon }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<span>{{ f.t }}</span>
+</li>
+</sc-for>
+</ul>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: auto">
+<a class="{{ t.btnClass }}" href="#apply" style="{{ t.btnStyle }}">Выбрать тариф <span class="arr" style="{{ t.arrStyle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<button class="btn-glass" aria-expanded="{{ t.open }}" onClick="{{ t.toggle }}" style="{{ t.toggleStyle }}">Задачи в тарифе <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
+</div>
+<sc-if value="{{ t.open }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="position: absolute; inset: 0; z-index: 5; border-radius: 28px; padding: 22px; box-sizing: border-box; background: #FBF8F3; border: 1px solid rgba(255,255,255,0.95); box-shadow: 0 40px 80px -30px rgba(120,86,36,0.5); display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<p class="sf" style="margin: 0; font-size: 24px; line-height: 1.1; color: #121826">Задачи в тарифе <span class="it">«{{ t.name }}»</span></p>
+<p style="margin: 0; font-size: 13px; line-height: 1.4; color: #3C4250">{{ t.lead }}</p>
+</div>
+<button class="glass" aria-label="Скрыть список задач" onClick="{{ t.toggle }}" style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #121826; cursor: pointer; padding: 0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<div style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; padding-right: 4px">
+<sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="5">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; padding-bottom: 8px; border-bottom: 1px solid rgba(173,127,69,0.4); font-size: 13px; font-weight: 700; color: #8A6536">{{ g.title }}</p>
+<ul class="dots" style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #121826">
+<sc-for list="{{ g.items }}" as="li" hint-placeholder-count="4"><li>{{ li.t }}</li></sc-for>
+</ul>
+</div>
+</sc-for>
+<sc-if value="{{ t.hasNote }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 12px 14px; border-radius: 12px; background: #F4ECDD; font-size: 13px; line-height: 1.5; color: #3C4250">{{ t.note }}</p></sc-if>
+</div>
+</div>
+</sc-if>
+</article>
+</sc-for>
+<div class="glass" style="border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px; margin-top: 6px">
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #3C4250"><span class="sf" style="font-size: 22px; font-style: italic; color: #AD7F45">+20%</span> к стоимости тарифа — за каждого дополнительного пользователя, который ставит задачи в общий чат. На «Старте» можно работать только одному.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #3C4250">Часы бухгалтера, юриста и специалиста по персоналу считаются по каждой задаче. Неиспользованные часы на следующий месяц не переносятся.</p>
+<p style="margin: 0; font-size: 13px; color: #5B6170">Рабочее время — пн–пт, 9:00–18:00 по Москве</p>
+</div>
+<button id="cmp-btn-m" class="btn-glass" aria-expanded="{{ cmpOpen }}" aria-controls="cmp-m" onClick="{{ toggleCmp }}" style="width: 100%; gap: 10px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AD7F45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M9 10v10M15 10v10"></path></svg>
+Сравнить все условия тарифов
+</button>
+<sc-if value="{{ cmpOpen }}" hint-placeholder-val="{{ false }}">
+<div id="cmp-m" class="open" role="region" aria-label="Полное сравнение тарифов" style="position: absolute; left: 12px; right: 12px; top: 40px; z-index: 30; border-radius: 28px; padding: 22px 16px 18px; background: #FBF8F3; border: 1px solid rgba(255,255,255,0.95); box-shadow: 0 50px 100px -30px rgba(120,86,36,0.55); display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 0 2px 10px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<p class="sf" style="margin: 0; font-size: 28px; line-height: 1.05">Сравнение <span class="it">тарифов</span></p>
+<p style="margin: 0; font-size: 13px; line-height: 1.4; color: #3C4250">Все условия в одной таблице</p>
+</div>
+<button class="glass" aria-label="Свернуть таблицу" onClick="{{ toggleCmp }}" style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #121826; cursor: pointer; padding: 0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<div role="row" style="position: sticky; top: 0; z-index: 2; background: #FBF8F3; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; padding: 10px 0; border-bottom: 1px solid rgba(18,24,38,0.14)">
+<sc-for list="{{ cmpHeads }}" as="h" hint-placeholder-count="4">
+<span role="columnheader" style="{{ h.style }}"><span style="font-size: 12px; font-weight: 700">{{ h.name }}</span><span style="font-size: 10px; opacity: .8">{{ h.price }} ₽</span></span>
+</sc-for>
+</div>
+<div role="table" aria-label="Условия тарифов">
+<sc-for list="{{ cmpRows }}" as="r" hint-placeholder-count="17">
+<div role="row" style="display: flex; flex-direction: column; gap: 8px; padding: 12px 0; border-bottom: 1px solid rgba(18,24,38,0.07)">
+<span role="rowheader" style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13px; font-weight: 700; line-height: 1.35">{{ r.p }}</span>
+<sc-if value="{{ r.hasHint }}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; line-height: 1.35; color: #5B6170">{{ r.hint }}</span></sc-if></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="4">
+<div role="cell" style="{{ c.box }}">
+<sc-if value="{{ c.yes }}" hint-placeholder-val="{{ false }}"><span aria-label="Входит" style="width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></sc-if>
+<sc-if value="{{ c.no }}" hint-placeholder-val="{{ false }}"><span aria-label="Не входит" style="width: 12px; height: 2px; border-radius: 2px; background: rgba(18,24,38,0.22)"></span></sc-if>
+<sc-if value="{{ c.isText }}" hint-placeholder-val="{{ true }}"><span style="font-size: 11px; font-weight: 600; line-height: 1.3; text-align: center">{{ c.t }}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px">
+<a class="btn" href="#apply">Подобрать тариф на созвоне <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<button class="btn-glass" onClick="{{ toggleCmp }}" style="width: 100%">Свернуть таблицу</button>
+</div>
+</div>
+</sc-if>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":3160}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: '', cmp: false };
+  }
+  renderVals() {
+    const open = this.state.open;
+    const base = [
+      { title: 'Личные дела', items: ['Бронирование ресторанов', 'Билеты, отели и трансферы', 'Маршрут для отпуска', 'Сопровождение поездок', 'Запись к врачам и мастерам', 'Подарки и цветы', 'Покупки и доставка', 'Коммунальные платежи и штрафы', 'Поиск няни, репетитора, клининга'] },
+      { title: 'Почта и календарь', items: ['Разбор входящих писем', 'Ответы по шаблону', 'Ведение календаря', 'Планирование и переносы встреч', 'Напоминания о делах и днях рождения', 'Справка о человеке перед встречей'] },
+      { title: 'Поиск и организация', items: ['Сравнение цен и предложений', 'Подбор подрядчиков и услуг', 'Сбор отзывов о компаниях', 'Звонки и уточнения', 'Запись и переносы визитов'] },
+      { title: 'Документы и таблицы', items: ['Документы по шаблону', 'Коммерческие предложения', 'Договоры по шаблону', 'Подготовка презентаций', 'Таблицы учёта', 'Расшифровка голосовых и итоги встреч'] },
+      { title: 'Тексты и визуал', items: ['Копирайтинг', 'Создание изображений с помощью ИИ', 'Создание видео с помощью ИИ'] },
+      { title: 'Клиенты и подрядчики', items: ['Ответы клиентам', 'Контроль сроков подрядчиков', 'Сбор обратной связи', 'Описание вакансии'] },
+      { title: 'Трекеры задач', items: ['Задачи в Todoist, TickTick и аналогах', 'События в Google Календаре', 'Списки дел и напоминания'] }
+    ];
+    const sets = {
+      start: { name: 'Старт', lead: 'Все задачи «Дейли» — в пределах 15 часов работы в месяц', groups: base, note: '' },
+      daily: { name: 'Дейли', lead: 'Повседневные дела и небольшие бизнес-задачи без ограничений по количеству', groups: base, note: '' },
+      biz: {
+        name: 'Бизнес', lead: 'Всё из «Дейли», а также', note: '',
+        groups: [
+          { title: 'Рабочие системы', items: ['Сделки в Битрикс24 и amoCRM', 'Задачи в Trello, Notion, Asana', 'Обновление клиентских баз', 'Отчёты из рабочих систем'] },
+          { title: 'Деньги', items: ['Счета и акты', 'Контроль оплат', 'Сверка с подрядчиками'] },
+          { title: 'Проекты', items: ['Исследование рынка и конкурентов', 'Сводные отчёты', 'Организация мероприятий'] },
+          { title: 'Команда', items: ['Регламенты и инструкции', 'Кадровые документы', 'Первичный отбор кандидатов'] },
+          { title: 'Специалисты — до 20 часов', items: ['Консультация бухгалтера', 'Проверка договора юристом', 'Претензии и ответы на них', 'Проверка контрагентов'] }
+        ]
+      },
+      bo: {
+        name: 'Бэк-офис', lead: 'Всё из «Бизнеса», а также',
+        note: 'Бухгалтер в тарифе ведёт текущие задачи и консультирует. Полное ведение бухгалтерии обсуждается отдельно.',
+        groups: [
+          { title: 'Операционный офис', items: ['Документооборот', 'Закупки и поставщики', 'Контроль поручений в команде'] },
+          { title: 'Люди', items: ['Подбор персонала', 'Адаптация новых сотрудников', 'График отпусков'] },
+          { title: 'Бухгалтерия и право — до 40 часов', items: ['Первичные документы', 'Связь с вашей бухгалтерией', 'Договоры и претензии'] },
+          { title: 'Персональный менеджер', items: ['Следит за сроками по всем задачам', 'Готовит сводку по итогам недели', 'Помогает расставить приоритеты'] }
+        ]
+      }
+    };
+
+    const feats = {
+      start: ['Личный ассистент', '15 часов работы в месяц', 'Ответ на задачу до 30 минут', 'Одна задача в работе, остальные в очереди', 'Трекеры задач и календари', 'Один пользователь', 'Договор и возврат за неотработанное время'],
+      daily: ['Личный ассистент', 'Задачи без ограничений', 'Ответ на задачу до 30 минут', 'Одна задача в работе, остальные в очереди', 'Задачи дольше 5 часов — с доплатой', 'Трекеры задач и календари', 'Один пользователь, дополнительный +20%'],
+      biz: ['Личный ассистент', 'Задачи без ограничений', 'Ответ на задачу до 15 минут', 'Две задачи в работе и мелкие поручения параллельно', 'Битрикс24, amoCRM, Notion и другие рабочие системы', 'Бухгалтер, юрист, специалист по персоналу — до 20 ч', 'Вечера и выходные — до 2 срочных задач в неделю', 'Два пользователя, заморозка на неделю'],
+      bo: ['Личный ассистент и персональный менеджер', 'Задачи без ограничений', 'Ответ на задачу до 15 минут', 'Пять задач в работе, задачи дольше 5 часов входят', 'Рабочие системы компании', 'Бухгалтер, юрист, специалист по персоналу — до 40 ч', 'Рекрутер', 'Вечера и выходные — до 5 срочных задач в неделю', 'До трёх пользователей, заморозка на две недели']
+    };
+    const meta = [
+      { id: 'start', sub: 'Попробовать формат или закрыть нерегулярные задачи', price: '19 900', kind: 'light' },
+      { id: 'daily', sub: 'Повседневные дела и небольшие бизнес-задачи', price: '29 900', kind: 'light' },
+      { id: 'biz', sub: 'Плотный поток задач и работа над проектами', price: '69 900', kind: 'dark' },
+      { id: 'bo', sub: 'Операционный офис без штата', price: '189 900', kind: 'gold' }
+    ];
+    const look = {
+      light: { bg: 'rgba(255,255,255,0.6)', border: 'rgba(255,255,255,0.95)', ink: '#121826', soft: '#5B6170', price: '#121826', icoBg: 'linear-gradient(145deg, #E7CC9C, #B98B51)', icoFg: '#121826', btn: 'btn', btnStyle: '', arrStyle: '', tb: 'background: rgba(255,255,255,0.7); color: #121826; min-height: 50px', shadow: '0 24px 50px -34px rgba(120,86,36,0.45)' },
+      dark: { bg: 'linear-gradient(165deg, #1D2434 0%, #121826 100%)', border: '#121826', ink: '#FBF8F3', soft: '#CDBFA8', price: '#E7CC9C', icoBg: 'linear-gradient(145deg, #E7CC9C, #B98B51)', icoFg: '#121826', btn: 'btn', btnStyle: 'background: #FBF8F3; color: #121826; box-shadow: none', arrStyle: 'background: rgba(18,24,38,0.08)', tb: 'background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #FBF8F3; min-height: 50px', shadow: '0 34px 70px -30px rgba(18,24,38,0.65)' },
+      gold: { bg: 'linear-gradient(160deg, #F4E6CB 0%, #E7CC9C 45%, #CFA86E 100%)', border: 'rgba(255,255,255,0.7)', ink: '#121826', soft: '#4A3F2E', price: '#121826', icoBg: '#121826', icoFg: '#E7CC9C', btn: 'btn', btnStyle: '', arrStyle: '', tb: 'background: rgba(255,255,255,0.35); border-color: rgba(18,24,38,0.18); color: #121826; min-height: 50px', shadow: '0 34px 70px -30px rgba(140,98,40,0.6)' }
+    };
+    const cards = meta.map((m) => {
+      const L = look[m.kind];
+      const set = sets[m.id];
+      const isOpen = open === m.id;
+      return {
+        name: set.name,
+        sub: m.sub,
+        price: m.price,
+        badge: m.kind === 'dark',
+        open: isOpen,
+        toggle: () => this.setState({ open: isOpen ? '' : m.id }),
+        lead: set.lead,
+        groups: set.groups.map((g) => ({ title: g.title, items: g.items.map((t) => ({ t: t })) })),
+        hasNote: !!set.note,
+        note: set.note,
+        feats: feats[m.id].map((t) => ({
+          t: t,
+          row: 'display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; line-height: 1.45; color: ' + L.ink,
+          icon: 'width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: ' + L.icoBg + '; color: ' + L.icoFg
+        })),
+        box: 'position: relative; min-height: 560px; box-sizing: border-box; border-radius: 28px; padding: 26px 22px 22px; display: flex; flex-direction: column; gap: 18px; margin-top: 6px; background: ' + L.bg + '; border: 1px solid ' + L.border + '; box-shadow: ' + L.shadow,
+        nameStyle: 'margin: 0; font-size: 30px; line-height: 1; font-weight: 400; color: ' + L.ink,
+        subStyle: 'font-size: 13px; line-height: 1.4; color: ' + L.soft,
+        priceStyle: 'font-size: 32px; line-height: 1; color: ' + L.price,
+        btnClass: L.btn,
+        btnStyle: L.btnStyle,
+        arrStyle: L.arrStyle,
+        toggleStyle: L.tb
+      };
+    });
+    const Y = 'y', N = 'n';
+    const raw = [
+      { p: 'Личный ассистент', v: [Y, Y, Y, Y] },
+      { p: 'Договор и соглашение о неразглашении', v: [Y, Y, Y, Y] },
+      { p: 'Количество задач', v: ['15 часов в месяц', 'Без ограни­чений', 'Без ограни­чений', 'Без ограни­чений'] },
+      { p: 'Ответ на новую задачу', v: ['до 30 минут', 'до 30 минут', 'до 15 минут', 'до 15 минут'] },
+      { p: 'Задач в работе одновременно', h: 'остальные ждут в очереди по вашему приоритету', v: ['1', '1', '2', '5'] },
+      { p: 'Мелкие поручения параллельно', h: 'задачи до 15 минут, вне очереди', v: [N, N, Y, Y] },
+      { p: 'Задачи дольше 5 часов', v: ['в счёт часов', 'с доплатой', 'с доплатой', Y] },
+      { p: 'Трекеры задач и календари', h: 'Todoist, Google Календарь и аналоги', v: [Y, Y, Y, Y] },
+      { p: 'Рабочие системы компании', h: 'Битрикс24, amoCRM, Notion, Trello, Asana и аналоги', v: [N, N, Y, Y] },
+      { p: 'Бухгалтер, юрист, специалист по персоналу', v: [N, N, 'до 20 ч в месяц', 'до 40 ч в месяц'] },
+      { p: 'Рекрутер', v: [N, N, N, Y] },
+      { p: 'Персональный менеджер', v: [N, N, N, Y] },
+      { p: 'Вечера и выходные', h: 'срочные задачи', v: [N, N, 'до 2 в неделю', 'до 5 в неделю'] },
+      { p: 'Пользователей в тарифе', v: ['1', '1', '2', 'до 3'] },
+      { p: 'Дополнительный пользователь', v: [N, '+20%', '+20%', '+20%'] },
+      { p: 'Заморозка тарифа', v: [N, N, '1 неделя', '2 недели'] },
+      { p: 'Возврат за неотработанное время', v: [Y, Y, Y, Y] }
+    ];
+    const tint = ['rgba(255,255,255,0.7)', 'rgba(255,255,255,0.7)', 'rgba(18,24,38,0.06)', 'rgba(231,204,156,0.35)'];
+    const cmpRows = raw.map((r) => ({
+      p: r.p,
+      hasHint: !!r.h,
+      hint: r.h || '',
+      cells: r.v.map((v, i) => ({
+        yes: v === Y,
+        no: v === N,
+        isText: v !== Y && v !== N,
+        t: v,
+        box: 'display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 6px 4px; box-sizing: border-box; border-radius: 10px; background: ' + tint[i]
+      }))
+    }));
+    const headLook = [
+      'background: rgba(255,255,255,0.85); color: #121826; border: 1px solid rgba(18,24,38,0.1)',
+      'background: rgba(255,255,255,0.85); color: #121826; border: 1px solid rgba(18,24,38,0.1)',
+      'background: linear-gradient(165deg, #1D2434 0%, #121826 100%); color: #FBF8F3; border: 1px solid #121826',
+      'background: linear-gradient(160deg, #F4E6CB 0%, #E7CC9C 45%, #CFA86E 100%); color: #121826; border: 1px solid rgba(255,255,255,0.7)'
+    ];
+    const cmpHeads = [['Старт', '19 900'], ['Дейли', '29 900'], ['Бизнес', '69 900'], ['Бэк-офис', '189 900']].map((h, i) => ({
+      name: h[0],
+      price: h[1],
+      style: 'display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 2px; border-radius: 12px; text-align: center; ' + headLook[i]
+    }));
+    const jump = (id) => {
+      try {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 12;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } catch (e) {}
+    };
+    return {
+      cards: cards,
+      cmpOpen: this.state.cmp,
+      cmpHeads: cmpHeads,
+      cmpRows: cmpRows,
+      toggleCmp: () => {
+        const willOpen = !this.state.cmp;
+        this.setState({ cmp: willOpen }, () => jump(willOpen ? 'cmp-m' : 'cmp-btn-m'));
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

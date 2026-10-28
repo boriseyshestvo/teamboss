@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Мобильная версия — заявка</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F3}
+a{color:#8A6536}a:hover{color:#121826}
+.sf{font-family:'Noto Serif Display',Georgia,'Times New Roman',serif}
+.glass{background:rgba(255,255,255,0.5);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,0.85);box-shadow:0 24px 60px -30px rgba(120,86,36,0.3),inset 0 1px 0 rgba(255,255,255,0.9)}
+.btn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:0 10px 0 24px;box-sizing:border-box;border-radius:999px;background:#121826;color:#FBF8F3;font-family:'Manrope',system-ui,sans-serif;font-size:16px;font-weight:600;text-decoration:none;border:none;box-shadow:0 16px 32px -14px rgba(18,24,38,0.6);cursor:pointer;text-align:left}
+.btn:hover{color:#FBF8F3}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.arr{width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,0.14);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.btn-glass{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 24px;box-sizing:border-box;border-radius:999px;background:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#121826;font-family:'Manrope',system-ui,sans-serif;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer}
+.btn-glass:hover{color:#121826}
+.h2{margin:0;font-family:'Noto Serif Display',Georgia,'Times New Roman',serif;font-size:38px;line-height:1.05;font-weight:400;letter-spacing:-0.01em}
+.it{font-style:italic;color:#AD7F45}
+.lead{margin:0;font-size:16px;line-height:1.6;color:#3C4250}
+.snap{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 28px;scrollbar-width:none;scroll-padding:0 20px}
+.snap::-webkit-scrollbar{display:none}
+.snap>*{scroll-snap-align:start;flex-shrink:0}
+.dots li::marker{color:#AD7F45}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.floaty{animation:floaty 5s ease-in-out infinite}
+@keyframes msgIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.msg{animation:msgIn .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes tdot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.tdot{width:6px;height:6px;border-radius:50%;background:#8A6536;display:inline-block;animation:tdot 1s ease-in-out infinite}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqr{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.marq{display:flex;align-items:center;width:max-content;animation:marq 36s linear infinite}
+.marqr{display:flex;align-items:center;width:max-content;animation:marqr 48s linear infinite}
+.marq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
+@keyframes open{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.open{animation:open .45s cubic-bezier(.2,.7,.2,1) both}
+.opt{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;text-align:left}
+.fld{font-family:'Manrope',system-ui,sans-serif;width:100%;box-sizing:border-box;min-height:52px;padding:13px 16px;border:1px solid rgba(18,24,38,0.14);border-radius:16px;background:rgba(255,255,255,0.8);color:#121826;font-size:16px;line-height:1.5}
+.fld:focus{outline:none;border-color:#AD7F45;box-shadow:0 0 0 3px rgba(173,127,69,0.2)}
+:focus-visible{outline:2px solid #8A6536;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.rise,.floaty,.marq,.marqr,.msg,.tdot,.open{animation:none}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; left: -200px; top: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 150px; top: 500px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.6) 0%, rgba(214,178,120,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: -200px; top: 1120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 150px; top: 1740px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
+
+<section id="apply" style="position: relative; flex-grow: 1; padding: 56px 12px 40px; display: flex; flex-direction: column; gap: 18px">
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="h2">Подберём ассистента <span class="it">сегодня</span></h2>
+<p class="lead">Пять коротких вопросов — и мы вернёмся с подходящим тарифом и планом, что передать в первую очередь.</p>
+</div>
+<ol aria-label="Шаги заявки" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+<li aria-current="{{ st.current }}" style="{{ st.row }}"><span style="{{ st.badge }}">{{ st.mark }}</span><span style="{{ st.text }}">{{ st.name }}</span></li>
+</sc-for>
+</ol>
+<div class="glass" style="border-radius: 28px; padding: 22px 18px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="height: 3px; border-radius: 999px; background: rgba(18,24,38,0.08)"><div style="{{ barStyle }}"></div></div></sc-if>
+<sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+<div class="open" style="display: flex; flex-direction: column; gap: 16px">
+<p class="sf" style="margin: 0; font-size: 28px; line-height: 1.12">Какие задачи хотите передать?</p>
+<p style="margin: -8px 0 0; font-size: 13px; color: #5B6170">Можно выбрать несколько</p>
+<sc-if value="{{ fromCatalog }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 10px 14px; border-radius: 12px; background: rgba(231,204,156,0.3); font-size: 13px; line-height: 1.5; color: #3C4250">Из каталога добавлено задач: <strong>{{ catCount }}</strong> — они придут вместе с заявкой</p></sc-if>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ areas }}" as="o" hint-placeholder-count="7"><button class="opt" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.t }}</button></sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="oth-m" style="font-size: 13px; font-weight: 600; color: #3C4250">Другое</label><input id="oth-m" class="fld" type="text" placeholder="Опишите задачу своими словами" value="{{ other }}" onChange="{{ onOther }}"></div>
+</div>
+</sc-if>
+<sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="display: flex; flex-direction: column; gap: 16px">
+<p class="sf" style="margin: 0; font-size: 28px; line-height: 1.12">Сколько времени в неделю уходит на эти задачи?</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ hours }}" as="o" hint-placeholder-count="4"><button class="opt" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.t }}</button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="display: flex; flex-direction: column; gap: 16px">
+<p class="sf" style="margin: 0; font-size: 28px; line-height: 1.12">Когда вам нужен ассистент?</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ when }}" as="o" hint-placeholder-count="4"><button class="opt" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.t }}</button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="display: flex; flex-direction: column; gap: 16px">
+<p class="sf" style="margin: 0; font-size: 28px; line-height: 1.12">Расскажите немного о себе</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ roles }}" as="o" hint-placeholder-count="4"><button class="opt" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.t }}</button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="display: flex; flex-direction: column; gap: 16px">
+<p class="sf" style="margin: 0; font-size: 28px; line-height: 1.12">Куда вам написать?</p>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="nm-m" style="font-size: 13px; font-weight: 600; color: #3C4250">Имя</label><input id="nm-m" class="fld" type="text" autocomplete="name" value="{{ name }}" onChange="{{ onName }}"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="ph-m" style="font-size: 13px; font-weight: 600; color: #3C4250">Телефон</label><input id="ph-m" class="fld" type="tel" autocomplete="tel" placeholder="+7" value="{{ phone }}" onChange="{{ onPhone }}"></div>
+<fieldset style="margin: 0; padding: 0; border: none"><legend style="padding: 0; margin-bottom: 8px; font-size: 13px; font-weight: 600; color: #3C4250">Где удобнее общаться</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{ methods }}" as="o" hint-placeholder-count="4"><button class="opt" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}" style="{{ o.chip }}">{{ o.t }}</button></sc-for></div></fieldset>
+<label for="ok-m" style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: #3C4250; cursor: pointer"><input id="ok-m" type="checkbox" checked="{{ consent }}" onChange="{{ onConsent }}" style="width: 22px; height: 22px; margin: 0; accent-color: #8A6536; flex-shrink: 0"><span>Соглашаюсь на обработку персональных данных в соответствии с <a href="#">политикой конфиденциальности</a></span></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+<div class="open" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px">
+<span style="width: 56px; height: 56px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<p class="sf" style="margin: 0; font-size: 36px; line-height: 1.05">Заявка отправлена</p>
+<p class="lead" style="font-size: 15px">Свяжемся с вами в течение 15 минут в рабочее время — с понедельника по пятницу, с 9:00 до 18:00 по Москве.</p>
+<div style="padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.95); display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; color: #5B6170">Судя по ответам, вам подойдёт тариф</span>
+<span class="sf" style="font-size: 26px; line-height: 1.15">«{{ rec }}» <span style="font-size: 17px; color: #8A6536">— {{ recPrice }} ₽ в месяц</span></span>
+<span style="font-size: 12px; color: #5B6170">Окончательно выберем вместе на созвоне</span>
+</div>
+<a class="btn-glass" href="#tariffs">Посмотреть тарифы</a>
+</div>
+</sc-if>
+<sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
+<p role="alert" style="margin: 0; padding: 14px 18px; border-radius: 16px; background: #F4ECDD; font-size: 14px; line-height: 1.55; color: #3C4250">Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в <a href="https://t.me/boriseyshestvo" target="_blank" rel="noopener noreferrer">Telegram</a> — ответим так же быстро.</p>
+</sc-if>
+<sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px">
+<button class="btn" onClick="{{ next }}" disabled="{{ blocked }}">{{ nextLabel }} <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></button>
+<sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button class="btn-glass" onClick="{{ back }}">Назад</button></sc-if>
+</div>
+</sc-if>
+</div>
+<div style="padding: 4px 8px 0; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #3C4250">Пока не готовы? В нашем блоге — полезные материалы о делегировании, без звонков.</p>
+<a href="#" style="font-size: 14px; font-weight: 600">Открыть блог</a>
+</div>
+</section>
+
+<footer style="position: relative; background: #121826; color: #FBF8F3; padding: 44px 20px 36px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.14em; background: linear-gradient(135deg, #E7CC9C 0%, #B98B51 100%); -webkit-background-clip: text; background-clip: text; color: transparent; align-self: flex-start; padding-right: 8px">TB</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #CDBFA8">Сервис удалённых ассистентов. Подключаем личного ассистента в день обращения.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+<nav aria-label="Разделы" style="display: flex; flex-direction: column; gap: 10px">
+<a href="#top" style="color: #CDBFA8; text-decoration: none; font-size: 14px">Как мы работаем</a>
+<a href="#tasks" style="color: #CDBFA8; text-decoration: none; font-size: 14px">Задачи</a>
+<a href="#tariffs" style="color: #CDBFA8; text-decoration: none; font-size: 14px">Тарифы</a>
+<a href="#guarantees" style="color: #CDBFA8; text-decoration: none; font-size: 14px">Гарантии и вопросы</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a href="tel:+79030304372" style="color: #CDBFA8; text-decoration: none; font-size: 14px">+7 903 030-43-72</a>
+<a href="https://t.me/boriseyshestvo" target="_blank" rel="noopener noreferrer" style="color: #CDBFA8; text-decoration: none; font-size: 14px">Telegram</a>
+<a href="https://wa.me/79030304372" target="_blank" rel="noopener noreferrer" style="color: #CDBFA8; text-decoration: none; font-size: 14px">WhatsApp</a>
+<a href="https://max.ru/u/f9LHodD0cOL7Utk7uRPuY43c2QCRkXMzRG4C75C_x0UKscBrMSBeNKi28zo" target="_blank" rel="noopener noreferrer" style="color: #CDBFA8; text-decoration: none; font-size: 14px">MAX</a>
+<a href="mailto:teamboss.service@gmail.com" style="color: #CDBFA8; text-decoration: none; font-size: 14px; word-break: break-all">teamboss.service@gmail.com</a>
+</div>
+</div>
+<div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 10px; font-size: 12px; line-height: 1.6; color: #A8A193">
+<span>Босс команды (TEAM BOSS)</span>
+<span>ИП Борисова Татьяна Вячеславовна, ИНН [номер], ОГРНИП [номер]</span>
+<a href="https://docs.google.com/document/d/19LpTYeDs_ywwY1TavvVb2xnGSABCAoll2lGd9gUBaf0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: #CDBFA8; text-decoration: none">Договор оферты</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1750}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 0, done: false, sending: false, sendError: false, areas: {}, other: '', hours: '', when: '', role: '', name: '', phone: '', method: 'Telegram', consent: false };
+  }
+  optStyle(on) {
+    return 'width: 100%; min-height: 54px; padding: 12px 18px; box-sizing: border-box; border-radius: 16px; font-size: 15px; font-weight: 500; border: 1px solid ' + (on ? '#121826' : 'rgba(18,24,38,0.12)') + '; background: ' + (on ? '#121826' : 'rgba(255,255,255,0.7)') + '; color: ' + (on ? '#FBF8F3' : '#121826');
+  }
+  chipStyle(on) {
+    return 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; border: 1px solid ' + (on ? '#121826' : 'rgba(18,24,38,0.12)') + '; background: ' + (on ? '#121826' : 'rgba(255,255,255,0.7)') + '; color: ' + (on ? '#FBF8F3' : '#121826');
+  }
+  single(list, key) {
+    return list.map((t) => {
+      const on = this.state[key] === t;
+      return { t: t, on: on, style: this.optStyle(on), chip: this.chipStyle(on), pick: () => { const o = {}; o[key] = t; this.setState(o); } };
+    });
+  }
+  renderVals() {
+    const s = this.state;
+    const areaList = ['Личные дела', 'Почта, календарь и звонки', 'Поиск и организация', 'Документы и деньги', 'Клиенты и подрядчики', 'Бухгалтер, юрист, кадры', 'Подбор сотрудников'];
+    const areas = areaList.map((t) => {
+      const on = !!s.areas[t];
+      return { t: t, on: on, style: this.optStyle(on), pick: () => { const a = Object.assign({}, this.state.areas); a[t] = !a[t]; this.setState({ areas: a }); } };
+    });
+    const anyArea = Object.keys(s.areas).some((k) => s.areas[k]) || s.other.trim() !== '';
+    const ready = [anyArea, s.hours !== '', s.when !== '', s.role !== '', s.name.trim() !== '' && s.phone.trim().length >= 6 && s.consent];
+    const names = ['Задачи', 'Объём', 'Сроки', 'О вас', 'Контакты'];
+    const steps = names.map((n, i) => {
+      const doneStep = s.done || i < s.step;
+      const cur = !s.done && i === s.step;
+      return {
+        name: n,
+        current: cur ? 'step' : 'false',
+        mark: doneStep ? '✓' : String(i + 1),
+        row: 'display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 2px; border-radius: 14px; background: ' + (cur ? 'rgba(255,255,255,0.7)' : 'transparent') + '; border: 1px solid ' + (cur ? 'rgba(255,255,255,0.95)' : 'transparent'),
+        badge: 'width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; background: ' + (doneStep ? 'linear-gradient(145deg, #E7CC9C, #B98B51)' : (cur ? '#121826' : 'rgba(18,24,38,0.06)')) + '; color: ' + (cur ? '#FBF8F3' : (doneStep ? '#121826' : '#5B6170')),
+        text: 'font-size: 11px; font-weight: ' + (cur ? '700' : '500') + '; color: ' + (cur || doneStep ? '#121826' : '#5B6170')
+      };
+    });
+    const hoursList = ['До 4 часов', 'От 4 до 8 часов', 'От 8 до 20 часов', 'Больше 20 часов'];
+    const recMap = [['Старт', '19 900'], ['Дейли', '29 900'], ['Бизнес', '69 900'], ['Бэк-офис', '189 900']];
+    let r = Math.max(0, hoursList.indexOf(s.hours));
+    if ((s.areas['Бухгалтер, юрист, кадры'] || s.areas['Клиенты и подрядчики']) && r < 2) r = 2;
+    if (s.areas['Подбор сотрудников'] && r < 3 && s.hours === 'Больше 20 часов') r = 3;
+    const pct = s.done ? 100 : Math.round(((s.step + 1) / 5) * 100);
+    let cat = { list: [], other: '' };
+    try { if (window.__tbTasks) cat = window.__tbTasks; } catch (e) {}
+    return {
+      steps: steps,
+      done: s.done,
+      notDone: !s.done,
+      s0: !s.done && s.step === 0,
+      s1: !s.done && s.step === 1,
+      s2: !s.done && s.step === 2,
+      s3: !s.done && s.step === 3,
+      s4: !s.done && s.step === 4,
+      barStyle: 'height: 3px; border-radius: 999px; background: linear-gradient(90deg, #E7CC9C, #AD7F45); transition: width .5s cubic-bezier(.2,.7,.2,1); width: ' + pct + '%',
+      areas: areas,
+      other: s.other,
+      onOther: (e) => this.setState({ other: e.target.value }),
+      hours: this.single(hoursList, 'hours'),
+      when: this.single(['Сегодня', 'На этой неделе', 'В течение месяца', 'Пока присматриваюсь'], 'when'),
+      roles: this.single(['Собственник бизнеса', 'Эксперт или специалист', 'Руководитель в компании', 'Другое'], 'role'),
+      methods: this.single(['Телефон', 'Telegram', 'WhatsApp', 'MAX'], 'method'),
+      name: s.name,
+      phone: s.phone,
+      consent: s.consent,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onConsent: (e) => this.setState({ consent: e.target.checked }),
+      canBack: s.step > 0,
+      noBack: s.step === 0,
+      back: () => this.setState({ step: Math.max(0, this.state.step - 1) }),
+      blocked: !ready[s.step] || s.sending,
+      nextLabel: s.sending ? 'Отправляем…' : (s.step === 4 ? 'Отправить заявку' : 'Дальше'),
+      sendError: s.sendError,
+      fromCatalog: cat.list.length > 0,
+      catCount: cat.list.length,
+      next: () => {
+        if (!ready[this.state.step] || this.state.sending) return;
+        if (this.state.step !== 4) { this.setState({ step: this.state.step + 1 }); return; }
+        const st = this.state;
+        let host = '';
+        try { host = window.location.hostname || ''; } catch (e) {}
+        if (!host || /claude\.ai|claudeusercontent|anthropic/.test(host)) { this.setState({ done: true }); return; }
+        let catNow = { list: [], other: '' };
+        try { if (window.__tbTasks) catNow = window.__tbTasks; } catch (e) {}
+        const payload = {
+          name: st.name, phone: st.phone, method: st.method,
+          areas: Object.keys(st.areas).filter((k) => st.areas[k]), other: st.other,
+          hours: st.hours, when: st.when, role: st.role,
+          tasks: catNow.list, tasksOther: catNow.other,
+          rec: recMap[r][0] + ' — ' + recMap[r][1] + ' ₽',
+          version: 'mobile', page: window.location.href, website: ''
+        };
+        this.setState({ sending: true, sendError: false });
+        fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+          .then((res) => res.ok ? res.json() : Promise.reject(new Error('bad status')))
+          .then((j) => { if (!j || !j.ok) throw new Error('not ok'); this.setState({ sending: false, done: true }); })
+          .catch(() => this.setState({ sending: false, sendError: true }));
+      },
+      rec: recMap[r][0],
+      recPrice: recMap[r][1]
+    };
+  }
+}
+</script>
+</body>
+</html>

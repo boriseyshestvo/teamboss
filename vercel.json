@@ -1,0 +1,35 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i).*(iphone|ipod|android.+mobile|windows phone|blackberry|bb10|opera mini|iemobile|mobile safari).*"
+        }
+      ],
+      "destination": "/mobile.html"
+    },
+    {
+      "source": "/",
+      "destination": "/desktop.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.dc\\.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ]
+}

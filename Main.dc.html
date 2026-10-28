@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Главная — сервис удалённых ассистентов</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F3}
+a{color:#8A6536}a:hover{color:#121826}
+.sf{font-family:'Noto Serif Display',Georgia,'Times New Roman',serif}
+.glass{background:rgba(255,255,255,0.46);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,0.8);box-shadow:0 30px 80px -34px rgba(120,86,36,0.28),inset 0 1px 0 rgba(255,255,255,0.9)}
+.btn{display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:0 10px 0 28px;border-radius:999px;background:#121826;color:#FBF8F3;font-family:'Manrope',system-ui,sans-serif;font-size:16px;font-weight:600;text-decoration:none;border:none;box-shadow:0 16px 32px -14px rgba(18,24,38,0.6);cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.btn:hover{color:#FBF8F3;transform:translateY(-2px);box-shadow:0 22px 44px -16px rgba(18,24,38,0.65)}
+.arr{width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,0.14);display:inline-flex;align-items:center;justify-content:center;transition:transform .3s}
+.btn:hover .arr{transform:translateX(3px)}
+.btn-glass{background:rgba(255,255,255,0.55);color:#121826;border:1px solid rgba(255,255,255,0.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 12px 30px -20px rgba(120,86,36,0.45);padding:0 28px}
+.btn-glass:hover{color:#121826;background:rgba(255,255,255,0.8)}
+.nav{color:#121826;text-decoration:none;font-size:15px;font-weight:500;padding:10px 16px;border-radius:999px;transition:background-color .2s}
+.nav:hover{color:#121826;background:rgba(255,255,255,0.7)}
+.lift{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.lift:hover{transform:translateY(-8px);box-shadow:0 40px 90px -36px rgba(120,86,36,0.42),inset 0 1px 0 rgba(255,255,255,0.9)}
+.round{width:52px;height:52px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#121826;cursor:pointer;transition:background-color .2s,opacity .2s}
+.round:hover{background:rgba(255,255,255,0.9)}
+.round:disabled{opacity:.35;cursor:default}
+.dot{height:8px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:width .35s,background-color .35s}
+.dots li::marker{color:#AD7F45}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{transform:translate3d(0,0,90px)}50%{transform:translate3d(0,-10px,90px)}}
+.rise{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.floaty{animation:floaty 5s ease-in-out infinite}
+@keyframes msgIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.msg{animation:msgIn .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes tdot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.tdot{width:7px;height:7px;border-radius:50%;background:#8A6536;display:inline-block;animation:tdot 1s ease-in-out infinite}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq{display:flex;align-items:center;width:max-content;animation:marq 46s linear infinite}
+.marq-wrap:hover .marq{animation-play-state:paused}
+.marq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.lg{margin-right:84px;opacity:.72;transition:opacity .3s}
+.lg:hover{opacity:1}
+.cn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:999px;background:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.95);font-size:15px;font-weight:600;transition:transform .3s cubic-bezier(.2,.7,.2,1),background-color .3s}
+.cn:hover{transform:translateY(-3px);background:#FFFFFF}
+:focus-visible{outline:2px solid #8A6536;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.rise,.floaty,.marq,.msg,.tdot{animation:none}.btn,.lift,.arr,.dot{transition:none}}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+
+<div aria-hidden="true" style="position: absolute; left: -220px; top: -160px; width: 820px; height: 820px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.75) 0%, rgba(233,205,158,0) 68%); filter: blur(10px)"></div>
+<div aria-hidden="true" style="position: absolute; right: -260px; top: 120px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.6) 0%, rgba(214,178,120,0) 66%); filter: blur(10px)"></div>
+<div aria-hidden="true" style="position: absolute; left: 380px; top: 620px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 65%)"></div>
+<div aria-hidden="true" style="position: absolute; left: -200px; top: 1700px; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.55) 0%, rgba(233,205,158,0) 68%)"></div>
+<div aria-hidden="true" style="position: absolute; right: -240px; top: 2500px; width: 860px; height: 860px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.45) 0%, rgba(214,178,120,0) 66%)"></div>
+
+<section id="top" style="position: relative; padding: 28px 40px 0">
+<div class="glass" style="border-radius: 40px; padding: 26px 56px 48px; display: flex; flex-direction: column; gap: 56px">
+
+<header style="display: flex; align-items: center; justify-content: space-between">
+<a href="#top" aria-label="На главную" style="text-decoration: none; display: flex; align-items: center">
+<span style="font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.14em; background: linear-gradient(135deg, #D9B77E 0%, #AD7F45 55%, #8A6536 100%); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: 6px">TB</span>
+</a>
+<nav aria-label="Разделы сайта" class="glass" style="display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px">
+<a class="nav" href="#how">Как мы работаем</a>
+<a class="nav" href="#tasks">Задачи</a>
+<a class="nav" href="#tariffs">Тарифы</a>
+<a class="nav" href="#guarantees">Гарантии</a>
+<a class="nav" href="#faq">Вопросы</a>
+</nav>
+<a class="btn" href="#apply" style="min-height: 50px; font-size: 15px"><span>Получить разбор задач</span> <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</header>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 500px; gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 30px">
+<div class="rise" style="display: flex; align-items: center; gap: 14px">
+<span style="width: 44px; height: 1px; background: #AD7F45"></span>
+<span style="font-size: 15px; font-weight: 500; color: #8A6536">Личные и бизнес-ассистенты онлайн</span>
+</div>
+<h1 class="sf rise" style="margin: 0; font-size: 92px; line-height: 0.98; font-weight: 400; letter-spacing: -0.02em; animation-delay: .08s">
+<span style="display: block">Сервис удалённых</span>
+<span style="display: block; font-style: italic; color: #AD7F45">ассистентов</span>
+</h1>
+<p class="rise" style="margin: 0; max-width: 600px; font-size: 20px; line-height: 1.6; color: #3C4250; animation-delay: .16s">Личный ассистент подключится уже в день обращения и заберёт рутину, которая съедает ваши часы. Вы занимаетесь тем, что приносит деньги, а всё остальное мы доводим до результата.</p>
+<div class="rise" style="display: flex; align-items: center; gap: 14px; animation-delay: .24s">
+<a class="btn" href="#apply"><span><br></span><p style="margin: 0">Получить разбор задач</p> <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+
+</div>
+</div>
+
+<div style="position: relative; height: 600px; display: flex; align-items: center; justify-content: center; perspective: 1400px" onMouseMove="{{ onMove }}" onMouseLeave="{{ onLeave }}">
+<div aria-hidden="true" style="{{ cardStyle }}">
+<div style="position: absolute; inset: 14px; border-radius: 22px; border: 1px solid rgba(255,255,255,0.55)"></div>
+<div style="{{ glossStyle }}"></div>
+<span style="position: absolute; left: 34px; top: 32px; font-size: 13px; font-weight: 600; color: rgba(18,24,38,0.6)">Ваш личный ассистент</span>
+
+
+
+
+<span style="position: absolute; right: 34px; top: 32px; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: rgba(18,24,38,0.6)"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E9E6B"></span>на связи</span>
+<div style="position: absolute; left: 22px; right: 22px; top: 74px; display: flex; flex-direction: column; gap: 12px; transform: translateZ(40px)">
+<sc-if value="{{ chat1 }}" hint-placeholder-val="{{ true }}">
+<div class="msg" style="align-self: flex-end; max-width: 262px; padding: 14px 16px 10px; border-radius: 18px 18px 6px 18px; background: #121826; color: #FBF8F3; box-shadow: 0 16px 30px -16px rgba(18,24,38,0.7); display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 14px; line-height: 1.45">Подготовь, пожалуйста, договор с новым подрядчиком по нашему шаблону и отправь ему на согласование</span>
+<span style="align-self: flex-end; font-size: 11px; color: #CDBFA8">12:02</span>
+</div>
+</sc-if>
+<sc-if value="{{ chat2 }}" hint-placeholder-val="{{ true }}">
+<div class="msg glass" style="align-self: flex-start; max-width: 240px; padding: 12px 16px 10px; border-radius: 18px 18px 18px 6px; background: rgba(255,255,255,0.74); display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 700; color: #8A6536">Ассистент</span>
+<span style="font-size: 14px; line-height: 1.45; color: #121826">Принято, беру в работу</span>
+<span style="align-self: flex-end; font-size: 11px; color: #5B6170">12:04</span>
+</div>
+</sc-if>
+<sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+<div class="msg glass" style="align-self: flex-start; padding: 15px 18px; border-radius: 18px 18px 18px 6px; background: rgba(255,255,255,0.74); display: flex; align-items: center; gap: 5px">
+<span class="tdot"></span><span class="tdot" style="animation-delay: .15s"></span><span class="tdot" style="animation-delay: .3s"></span>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ chat3 }}" hint-placeholder-val="{{ true }}">
+<div class="floaty" style="position: absolute; left: -58px; bottom: 34px; width: 318px">
+<div class="msg glass" style="box-sizing: border-box; padding: 16px 18px 12px; border-radius: 20px 20px 20px 6px; background: rgba(255,255,255,0.82); display: flex; flex-direction: column; gap: 9px">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #8A6536"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E9E6B"></span>Ассистент</span>
+<span style="font-size: 14px; line-height: 1.5; color: #121826">Готово! Договор подготовила по шаблону и отправила подрядчику на согласование. Копия для вас:</span>
+<span style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: rgba(244,236,221,0.95)">
+<span style="width: 34px; height: 34px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826; flex-shrink: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 13px; font-weight: 700; color: #121826">Договор подряда.pdf</span><span style="font-size: 11px; color: #5B6170">248 КБ</span></span>
+</span>
+<span style="align-self: flex-end; font-size: 11px; color: #5B6170">12:31 — задача закрыта</span>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding-top: 30px; border-top: 1px solid rgba(18,24,38,0.1)">
+<div style="display: flex; flex-direction: column; gap: 6px; padding-right: 32px; align-items: center"><span class="sf" style="font-size: 50px; line-height: 1; font-weight: 400">24 часа</span><span style="font-size: 14px; font-weight: 500; color: rgb(91, 97, 112)">время подбора ассистента</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 0 32px; border-left: 1px solid rgba(18,24,38,0.1); align-items: center">
+<span class="sf" style="font-size: 50px; line-height: 1; font-weight: 400">до 15 <span style="font-size: 26px; color: #5B6170">мин</span></span>
+<span style="font-size: 14px; font-weight: 500; color: #5B6170">ответ на новую задачу*</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-left: 32px; border-left: 1px solid rgba(18,24,38,0.1); align-items: center">
+<span class="sf" style="font-size: 50px; line-height: 1; font-weight: 400">от 19 900 <span style="font-size: 26px; color: #5B6170">₽</span></span>
+<span style="font-size: 14px; font-weight: 500; color: #5B6170">в месяц — стоимость тарифов</span>
+</div>
+</div>
+
+</div><p style="margin: 0; font-size: 13px; color: #5B6170">*На тарифах «Бизнес» и «Бэк-офис». На «Старте» и «Дейли» — до 30 минут.</p>
+
+</div>
+</section>
+
+<section aria-labelledby="proof" style="position: relative; padding: 110px 96px 30px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 80px; align-items: end; margin-bottom: 44px">
+<h2 id="proof" class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Нам доверяют <span style="font-style: italic; color: #AD7F45">операционку</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3C4250">Предприниматели, эксперты и компании — от застройщиков и агентств недвижимости до школ и сервисов аренды.</p>
+</div>
+
+<div class="glass marq-wrap" style="border-radius: 32px; padding: 34px 0">
+<div class="marq-mask">
+<div class="marq">
+<img class="lg" src="/assets/b18452bbb392ca46b77d91c368b1a863.png" alt="Этажи" style="height: 30px; width: auto; display: block">
+<img class="lg" src="/assets/a2db8aeeae127c6c7322d79d9689ba5d.png" alt="Whitewill" style="height: 62px; width: auto; display: block">
+<img class="lg" src="/assets/8e4ce2ca02868d42ac388750bb01b2ba.png" alt="Samolet" style="height: 40px; width: auto; display: block">
+<img class="lg" src="/assets/75be5d28848df66a6b5a0adebbb1c3f3.png" alt="All Assets Bali" style="height: 32px; width: auto; display: block">
+<img class="lg" src="/assets/6a352050fad4ccd8ab484521083a9dee.png" alt="Школа мастеров массажа" style="height: 50px; width: auto; display: block">
+<img class="lg" src="/assets/a5d57b5f41104e2214e6d42d7784f6e6.png" alt="samui.rest" style="height: 56px; width: auto; display: block">
+<img class="lg" src="/assets/31a50150af9396a3116d35c1dcaa34a3.png" alt="Shellgrow" style="height: 36px; width: auto; display: block">
+<img class="lg" src="/assets/4cd918d347ad12f1bf401ea3d8611007.png" alt="Great Tex" style="height: 60px; width: auto; display: block">
+<div aria-hidden="true" style="display: flex; align-items: center">
+<img class="lg" src="/assets/b18452bbb392ca46b77d91c368b1a863.png" alt="" style="height: 30px; width: auto; display: block">
+<img class="lg" src="/assets/a2db8aeeae127c6c7322d79d9689ba5d.png" alt="" style="height: 62px; width: auto; display: block">
+<img class="lg" src="/assets/8e4ce2ca02868d42ac388750bb01b2ba.png" alt="" style="height: 40px; width: auto; display: block">
+<img class="lg" src="/assets/75be5d28848df66a6b5a0adebbb1c3f3.png" alt="" style="height: 32px; width: auto; display: block">
+<img class="lg" src="/assets/6a352050fad4ccd8ab484521083a9dee.png" alt="" style="height: 50px; width: auto; display: block">
+<img class="lg" src="/assets/a5d57b5f41104e2214e6d42d7784f6e6.png" alt="" style="height: 56px; width: auto; display: block">
+<img class="lg" src="/assets/31a50150af9396a3116d35c1dcaa34a3.png" alt="" style="height: 36px; width: auto; display: block">
+<img class="lg" src="/assets/4cd918d347ad12f1bf401ea3d8611007.png" alt="" style="height: 60px; width: auto; display: block">
+</div>
+</div>
+</div>
+</div>
+
+<div style="margin-top: 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<div class="lift" style="border-radius: 30px; padding: 34px; display: flex; flex-direction: column; gap: 12px; background: linear-gradient(160deg, #F4E6CB 0%, #E7CC9C 45%, #CFA86E 100%); box-shadow: 0 40px 80px -40px rgba(140,98,40,0.6)">
+<span class="sf" style="font-size: 52px; line-height: 1; letter-spacing: -0.01em; white-space: nowrap">{{ hoursText }}+</span>
+<span style="font-size: 15px; line-height: 1.55; color: #2A2F3B">часов освободили клиентам — на бизнес, семью и отдых</span>
+</div>
+<div class="glass lift" style="border-radius: 30px; padding: 34px; display: flex; flex-direction: column; gap: 12px">
+<span class="sf" style="font-size: 52px; line-height: 1; letter-spacing: -0.01em; white-space: nowrap">50+</span>
+<span style="font-size: 15px; line-height: 1.55; color: #3C4250">ассистентов подобрали в штат для клиентов, которым нужен свой сотрудник</span>
+</div>
+<div class="glass lift" style="border-radius: 30px; padding: 34px; display: flex; flex-direction: column; gap: 12px">
+<span class="sf" style="font-size: 52px; line-height: 1; letter-spacing: -0.01em; white-space: nowrap">9 <span style="font-size: 28px; font-style: italic">стран</span></span>
+<span style="font-size: 15px; line-height: 1.55; color: #3C4250">где живут и работают наши клиенты — разница во времени нам не мешает</span>
+</div>
+<div class="glass lift" style="border-radius: 30px; padding: 34px; display: flex; flex-direction: column; gap: 12px">
+<span class="sf" style="font-size: 52px; line-height: 1; letter-spacing: -0.01em; white-space: nowrap">3+ <span style="font-size: 28px; font-style: italic">года</span></span>
+<span style="font-size: 15px; line-height: 1.55; color: #3C4250">опыта работы у наших ассистентов</span>
+</div>
+</div>
+
+<div class="glass" style="margin-top: 24px; border-radius: 28px; padding: 22px 30px; display: flex; align-items: center; gap: 28px">
+<span style="font-size: 14px; font-weight: 700; color: #8A6536; white-space: nowrap">География клиентов</span>
+<ul aria-label="Страны, где работают наши клиенты" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px">
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Россия</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>ОАЭ</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Таиланд</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Индонезия</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Израиль</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Аргентина</li><li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Казахстан</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Беларусь</li>
+<li class="cn"><span style="width: 7px; height: 7px; border-radius: 50%; background: #AD7F45"></span>Китай</li>
+
+</ul>
+</div>
+</section>
+
+<section id="how" style="position: relative; padding: 130px 96px 110px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 80px; align-items: end; margin-bottom: 64px">
+<h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Ассистент приступает к работе <span style="font-style: italic; color: #AD7F45">в день обращения</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3C4250">Без вакансий, собеседований и ожидания выхода на работу. Подбираем ассистента под ваши задачи сразу после знакомства.</p>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<li class="glass lift" style="border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 18px">
+<span class="sf" aria-hidden="true" style="font-size: 64px; line-height: 0.9; font-style: italic; color: #AD7F45">1</span>
+<h3 class="sf" style="margin: 0; font-size: 30px; line-height: 1.15; font-weight: 500">Вы оставляете заявку</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #3C4250">Отмечаете задачи в каталоге или просто описываете своими словами, что хотите передать.</p>
+</li>
+<li class="glass lift" style="border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 18px">
+<span class="sf" aria-hidden="true" style="font-size: 64px; line-height: 0.9; font-style: italic; color: #AD7F45">2</span>
+<h3 class="sf" style="margin: 0; font-size: 30px; line-height: 1.15; font-weight: 500">Знакомимся на созвоне</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #3C4250">Обсуждаем задачи, приоритеты и то, как вам удобно работать. Подсказываем тариф, на котором вы не переплатите. Это бесплатно.</p>
+</li>
+<li class="glass lift" style="border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 18px">
+<span class="sf" aria-hidden="true" style="font-size: 64px; line-height: 0.9; font-style: italic; color: #AD7F45">3</span>
+<h3 class="sf" style="margin: 0; font-size: 30px; line-height: 1.15; font-weight: 500">Ассистент берёт первые задачи</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #3C4250">В тот же день у вас появляется рабочий чат с личным ассистентом. Дальше задачи ставятся одним сообщением.</p>
+</li>
+</ol>
+</section>
+
+<section style="position: relative; padding: 110px 96px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 96px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px; max-width: 640px">
+<h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Один человек <span style="font-style: italic; color: #AD7F45">знает ваш контекст</span></h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.7; color: #3C4250">Вам больше не придётся по десять раз объяснять, как у вас всё устроено. За вами закреплён личный ассистент, и все задачи идут через него.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.7; color: #3C4250">В первые дни он знакомится с вашими делами: уточняет, в каком виде вам удобно получать результат, перенимает ваш тон общения или тон вашей компании, запоминает, что можно делать самостоятельно, а что — только после согласования.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.7; color: #3C4250">Всё это записывается в ваш профиль. Дальше задача ставится одной фразой, а если ассистент когда-нибудь сменится, новый продолжит с того же места.</p>
+</div>
+<aside class="glass" aria-label="Пример профиля клиента" style="border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 6px; transform: perspective(1400px) rotateY(-8deg) rotateX(3deg); background: rgba(255,255,255,0.6)">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px">
+<p class="sf" style="margin: 0; font-size: 28px; font-weight: 500">Профиль клиента</p>
+<span style="padding: 7px 14px; border-radius: 999px; background: #121826; color: #EAD9BD; font-size: 12px; font-weight: 600">пример</span>
+</div>
+<dl style="margin: 0; display: flex; flex-direction: column">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-top: 1px solid rgba(18,24,38,0.08)">
+<dt style="font-size: 13px; font-weight: 700; color: #8A6536">Обращение</dt>
+<dd style="margin: 0; font-size: 16px">Анна Сергеевна, на «вы»</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-top: 1px solid rgba(18,24,38,0.08)">
+<dt style="font-size: 13px; font-weight: 700; color: #8A6536">Как присылать результат</dt>
+<dd style="margin: 0; font-size: 16px">Коротко в чат, файлы — в общую папку</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-top: 1px solid rgba(18,24,38,0.08)">
+<dt style="font-size: 13px; font-weight: 700; color: #8A6536">Тон с партнёрами</dt>
+<dd style="margin: 0; font-size: 16px">Деловой, но тёплый</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-top: 1px solid rgba(18,24,38,0.08)">
+<dt style="font-size: 13px; font-weight: 700; color: #8A6536">Согласовывать заранее</dt>
+<dd style="margin: 0; font-size: 16px">Расходы от 10 000 ₽</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 16px 0 0; border-top: 1px solid rgba(18,24,38,0.08)">
+<dt style="font-size: 13px; font-weight: 700; color: #8A6536">Личное</dt>
+<dd style="margin: 0; font-size: 16px">Места у окна, кофе без сахара</dd>
+</div>
+</dl>
+</aside>
+</div>
+</section>
+
+<section style="position: relative; flex-grow: 1; padding: 110px 0 120px 96px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; padding-right: 96px; margin-bottom: 56px">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">С чем к нам <span style="font-style: italic; color: #AD7F45">приходят</span></h2>
+<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.6; color: #3C4250">Узнали себя? Расскажите на созвоне — покажем, что можно передать уже на этой неделе.</p>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<button class="round glass" aria-label="Предыдущие истории" onClick="{{ prev }}" disabled="{{ atStart }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg></button>
+<button class="round glass" aria-label="Следующие истории" onClick="{{ next }}" disabled="{{ atEnd }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+<div style="overflow: hidden; padding: 20px 0 40px">
+<div style="{{ trackStyle }}">
+<sc-for list="{{ stories }}" as="st" hint-placeholder-count="6">
+<article class="glass lift" style="flex-shrink: 0; width: 400px; min-height: 440px; box-sizing: border-box; border-radius: 30px; padding: 38px; display: flex; flex-direction: column; gap: 18px">
+<p class="sf" style="margin: 0; font-size: 30px; line-height: 1.18; font-style: italic; font-weight: 400">{{ st.quote }}</p>
+<p style="margin: 0; font-size: 14px; font-weight: 500; color: #5B6170">{{ st.who }}</p>
+<div style="height: 1px; background: rgba(18,24,38,0.1); margin-top: auto"></div>
+<p style="margin: 0; font-size: 13px; font-weight: 700; color: #8A6536">Что берём на себя</p>
+<ul class="dots" style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5">
+<sc-for list="{{ st.take }}" as="tk" hint-placeholder-count="3">
+<li>{{ tk.t }}</li>
+</sc-for>
+</ul>
+</article>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; gap: 8px; padding-right: 96px">
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="4">
+<button class="dot" aria-label="{{ d.label }}" aria-current="{{ d.on }}" onClick="{{ d.go }}" style="{{ d.style }}"></button>
+</sc-for>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { rx: 5, ry: -12, gx: 28, gy: 18, live: false, idx: 0, hours: 200000, chat: 4 };
+  }
+  componentDidMount() {
+    const target = 200000;
+    let reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (reduce) { return; }
+    this.timers = [];
+    const runChat = () => {
+      this.timers = [];
+      [[0, 0], [500, 1], [1800, 2], [2900, 3], [4700, 4]].forEach((st) => {
+        this.timers.push(setTimeout(() => this.setState({ chat: st[1] }), st[0]));
+      });
+      this.timers.push(setTimeout(runChat, 11500));
+    };
+    runChat();
+    const start = Date.now();
+    const dur = 1800;
+    const tick = () => {
+      const t = Math.min(1, (Date.now() - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      this.setState({ hours: Math.round(target * eased / 1000) * 1000 });
+      if (t < 1) { this.raf = requestAnimationFrame(tick); }
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() {
+    if (this.raf) cancelAnimationFrame(this.raf);
+    (this.timers || []).forEach((t) => clearTimeout(t));
+  }
+  renderVals() {
+    const s = this.state;
+    const stories = [
+      { quote: '«Всё держится на мне. Быстрее сделать самому, чем объяснить»', who: 'Собственник, который тянет операционку в одиночку', take: ['Почту и переписку', 'Календарь и встречи', 'Контроль поручений'] },
+      { quote: '«Помощник уволился — и всё встало»', who: 'Предприниматель, который остался без ассистента', take: ['Подключим нового ассистента в тот же день', 'Разберём накопившиеся задачи', 'Опишем процессы, чтобы это не повторилось'] },
+      { quote: '«Нанимать долго, а помощь нужна уже сейчас»', who: 'Руководитель, который не готов расширять штат', take: ['Рутину без найма, отпусков и больничных', 'Документы, счета и подрядчиков', 'А если нужен свой сотрудник — подберём'] },
+      { quote: '«На организацию уходит полдня, а клиенты ждут»', who: 'Эксперт, у которого рутина съедает рабочее время', take: ['Запись клиентов и напоминания', 'Эфиры, встречи и мероприятия', 'Материалы, таблицы и презентации'] },
+      { quote: '«Счета и договоры тонут в чатах»', who: 'Владелец небольшой команды', take: ['Счета, акты и контроль оплат', 'Договоры по шаблону', 'Порядок в Битрикс24 или amoCRM'] },
+      { quote: '«Личные дела тоже горят, а на них нет ни минуты»', who: 'Руководитель, у которого работа и жизнь в одном календаре', take: ['Врачей, мастеров и бытовые услуги', 'Путешествия, билеты и отели', 'Подарки и праздники для близких'] }
+    ].map((x) => ({ quote: x.quote, who: x.who, take: x.take.map((t) => ({ t: t })) }));
+    const maxIdx = stories.length - 3;
+    const idx = Math.min(s.idx, maxIdx);
+    const dots = [];
+    for (let i = 0; i <= maxIdx; i++) {
+      const on = i === idx;
+      dots.push({
+        on: on,
+        label: 'Показать истории с ' + (i + 1) + '-й',
+        go: () => this.setState({ idx: i }),
+        style: 'width: ' + (on ? '36px' : '8px') + '; background: ' + (on ? '#AD7F45' : 'rgba(18,24,38,0.18)')
+      });
+    }
+    const gold = 'linear-gradient(160deg, #F4E6CB 0%, #E7CC9C 38%, #CFA86E 72%, #B98B51 100%)';
+    return {
+      hoursText: (s.hours || 0).toLocaleString('ru-RU'),
+      chat1: s.chat >= 1,
+      chat2: s.chat >= 2,
+      typing: s.chat === 3,
+      chat3: s.chat >= 4,
+      onMove: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        this.setState({ rx: (0.5 - y) * 16, ry: (x - 0.5) * 22, gx: x * 100, gy: y * 100, live: true });
+      },
+      onLeave: () => this.setState({ rx: 5, ry: -12, gx: 28, gy: 18, live: false }),
+      cardStyle: 'position: relative; width: 400px; height: 530px; border-radius: 30px; background: ' + gold + '; transform-style: preserve-3d; transform: rotateX(' + s.rx.toFixed(2) + 'deg) rotateY(' + s.ry.toFixed(2) + 'deg); transition: transform ' + (s.live ? '.12s ease-out' : '.9s cubic-bezier(.2,.7,.2,1)') + '; box-shadow: 0 60px 110px -40px rgba(140,98,40,0.6), 0 18px 40px -20px rgba(140,98,40,0.45)',
+      glossStyle: 'position: absolute; inset: 0; border-radius: 30px; pointer-events: none; background: radial-gradient(circle at ' + s.gx.toFixed(1) + '% ' + s.gy.toFixed(1) + '%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%)',
+      stories: stories,
+      trackStyle: 'display: flex; gap: 24px; transform: translateX(-' + (idx * 424) + 'px); transition: transform .7s cubic-bezier(.2,.7,.2,1)',
+      prev: () => this.setState({ idx: Math.max(0, idx - 1) }),
+      next: () => this.setState({ idx: Math.min(maxIdx, idx + 1) }),
+      atStart: idx === 0,
+      atEnd: idx === maxIdx,
+      dots: dots
+    };
+  }
+}
+</script>
+</body>
+</html>

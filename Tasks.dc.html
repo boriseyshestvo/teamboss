@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Задачи и стоимость сотрудника — сервис удалённых ассистентов</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F3}
+a{color:#8A6536}a:hover{color:#121826}
+.sf{font-family:'Noto Serif Display',Georgia,'Times New Roman',serif}
+.glass{background:rgba(255,255,255,0.46);-webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,0.8);box-shadow:0 30px 80px -34px rgba(120,86,36,0.28),inset 0 1px 0 rgba(255,255,255,0.9)}
+.btn{display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:0 10px 0 28px;border-radius:999px;background:#121826;color:#FBF8F3;font-family:'Manrope',system-ui,sans-serif;font-size:16px;font-weight:600;text-decoration:none;border:none;box-shadow:0 16px 32px -14px rgba(18,24,38,0.6);cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.btn:hover{color:#FBF8F3;transform:translateY(-2px)}
+.arr{min-width:36px;height:36px;padding:0 10px;box-sizing:border-box;border-radius:999px;background:rgba(255,255,255,0.14);display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px}
+.btn-glass{background:rgba(255,255,255,0.55);color:#121826;border:1px solid rgba(255,255,255,0.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 12px 30px -20px rgba(120,86,36,0.45);padding:0 28px}
+.btn-glass:hover{color:#121826;background:rgba(255,255,255,0.8)}
+.chip{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,transform .25s}
+.chip:hover{transform:translateY(-2px)}
+.tab{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;transition:background-color .25s,color .25s}
+.link{font-family:'Manrope',system-ui,sans-serif;background:none;border:none;padding:0;color:#8A6536;font-size:15px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.fld{font-family:'Manrope',system-ui,sans-serif;width:100%;box-sizing:border-box;padding:16px 18px;border:1px solid rgba(18,24,38,0.14);border-radius:16px;background:rgba(255,255,255,0.75);color:#121826;font-size:16px;line-height:1.5;resize:vertical}
+.fld:focus{outline:none;border-color:#AD7F45;box-shadow:0 0 0 3px rgba(173,127,69,0.2)}
+.range{width:100%;accent-color:#AD7F45;height:28px;cursor:pointer}
+.bar{transition:width .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pop{animation:pop .45s cubic-bezier(.2,.7,.2,1) both}
+:focus-visible{outline:2px solid #8A6536;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.pop{animation:none}.btn,.chip,.tab,.bar{transition:none}}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+
+<div aria-hidden="true" style="position: absolute; right: -240px; top: -120px; width: 860px; height: 860px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.7) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; left: -260px; top: 520px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.85) 0%, rgba(222,228,238,0) 65%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 300px; top: 1350px; width: 980px; height: 980px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.5) 0%, rgba(214,178,120,0) 66%)"></div>
+
+<section id="tasks" style="position: relative; padding: 120px 96px 90px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 80px; align-items: end; margin-bottom: 52px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Какие задачи можно <span style="font-style: italic; color: #AD7F45">передать ассистенту</span></h2>
+<p style="margin: 0; max-width: 680px; font-size: 18px; line-height: 1.65; color: #3C4250">Выбирайте задачи в любых разделах — отмеченные сохраняются, даже когда вы переключаетесь между ними, и попадут в заявку. Если нужной задачи нет, опишите её в поле ниже.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #3C4250">
+<span style="display: flex; align-items: center; gap: 10px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 1px solid #5B6170"></span>Без пометки — на всех тарифах</span>
+<span style="display: flex; align-items: center; gap: 10px"><span style="display: inline-flex; gap: 3px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #CFA86E"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #121826"></span></span>Две пометки — в тарифах «Бизнес» и «Бэк-офис»</span>
+<span style="display: flex; align-items: center; gap: 10px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #121826"></span>Одна пометка «Бэк-офис» — только в этом тарифе</span>
+</div>
+</div>
+
+<div class="glass" style="border-radius: 36px; padding: 40px; display: flex; flex-direction: column; gap: 32px">
+<div role="tablist" aria-label="Разделы задач" style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+<button class="tab" role="tab" aria-selected="{{ c.active }}" onClick="{{ c.pick }}" style="{{ c.style }}">
+<span>{{ c.name }}</span>
+<sc-if value="{{ c.hasCount }}" hint-placeholder-val="{{ false }}">
+<span style="{{ c.badge }}">{{ c.count }}</span>
+</sc-if>
+</button>
+</sc-for>
+</div>
+
+<div role="tabpanel" aria-label="{{ catName }}" style="display: flex; flex-wrap: wrap; gap: 12px; align-content: flex-start; min-height: 250px">
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="12">
+<button class="chip" aria-pressed="{{ it.on }}" onClick="{{ it.toggle }}" style="{{ it.style }}">
+<sc-if value="{{ it.on }}" hint-placeholder-val="{{ false }}">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+</sc-if>
+<span>{{ it.n }}</span>
+<sc-for list="{{ it.tags }}" as="tg" hint-placeholder-count="0">
+<span style="{{ tg.style }}">{{ tg.label }}</span>
+</sc-for>
+</button>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 32px; align-items: end; padding-top: 28px; border-top: 1px solid rgba(18,24,38,0.08)">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<label for="other" style="font-size: 15px; font-weight: 600">Другое — задача, которой нет в списке</label>
+<textarea id="other" class="fld" rows="3" placeholder="Например: раз в неделю собирать отчёт по продажам из таблицы и присылать мне в Telegram" value="{{ other }}" onChange="{{ onOther }}"></textarea>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-end">
+<p style="margin: 0; font-size: 15px; color: #3C4250">Выбрано задач: <strong style="font-weight: 700; color: #121826">{{ total }}</strong><sc-if value="{{ hasOther }}" hint-placeholder-val="{{ false }}"><span> и ваше описание</span></sc-if></p>
+<div style="display: flex; align-items: center; gap: 16px">
+<sc-if value="{{ hasAny }}" hint-placeholder-val="{{ false }}">
+<button class="link" onClick="{{ reset }}">Сбросить</button>
+</sc-if>
+<a class="btn" href="#apply">Добавить в заявку <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="position: relative; flex-grow: 1; padding: 100px 96px 120px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 80px; align-items: end; margin-bottom: 52px">
+<h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Сколько на самом деле стоит <span style="font-style: italic; color: #AD7F45">свой ассистент в штате</span></h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3C4250">Зарплата — только часть расходов. Передвиньте ползунок и посмотрите, из чего складывается полная сумма.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: stretch">
+<div class="glass" style="border-radius: 36px; padding: 44px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<label for="salary" style="display: flex; justify-content: space-between; align-items: baseline">
+<span style="font-size: 15px; font-weight: 600; color: #3C4250">Зарплата сотрудника</span>
+<span class="sf" style="font-size: 36px">{{ salaryText }} ₽</span>
+</label>
+<input id="salary" class="range" type="range" min="40000" max="150000" step="5000" value="{{ salary }}" onChange="{{ onSalary }}">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #5B6170"><span>40 000 ₽</span><span>150 000 ₽</span></div>
+</div>
+
+<div aria-hidden="true" style="display: flex; height: 18px; border-radius: 999px; overflow: hidden; background: rgba(18,24,38,0.06)">
+<sc-for list="{{ parts }}" as="p" hint-placeholder-count="5">
+<div class="bar" style="{{ p.bar }}"></div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{ parts }}" as="p" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 14px 0; border-top: 1px solid rgba(18,24,38,0.08)">
+<span style="{{ p.swatch }}"></span>
+<span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 16px; font-weight: 600">{{ p.label }}</span><span style="font-size: 13px; color: #5B6170">{{ p.note }}</span></span>
+<span style="font-size: 16px; font-weight: 600; white-space: nowrap">{{ p.value }} ₽</span>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; border-top: 1px solid rgba(18,24,38,0.2)">
+<span style="font-size: 16px; font-weight: 700">Всего в месяц</span>
+<span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px"><span class="sf" style="font-size: 48px; line-height: 1">≈ {{ totalText }} ₽</span><span style="font-size: 13px; color: #5B6170">в {{ ratio }} раза больше зарплаты</span></span>
+</div>
+</div>
+
+<div class="glass" style="border-radius: 36px; padding: 44px; display: flex; flex-direction: column; gap: 26px; background: rgba(255,255,255,0.6)">
+<p class="sf" style="margin: 0; font-size: 30px; line-height: 1.15">Для сравнения — наши тарифы</p>
+<sc-for list="{{ compare }}" as="c" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 15px"><span style="font-weight: 600">{{ c.name }}</span><span style="font-weight: 700">{{ c.price }} ₽</span></div>
+<div aria-hidden="true" style="height: 10px; border-radius: 999px; background: rgba(18,24,38,0.06)"><div class="bar" style="{{ c.bar }}"></div></div>
+</div>
+</sc-for>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: #3C4250">Штатный сотрудник нужен не всем: если задач на полный день нет, вы платите за время, когда он ничем не занят. А если вам нужен именно свой человек — подберём его, пропишем инструкции и поможем ввести в работу.</p>
+<div style="display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap">
+<a class="btn" href="#tariffs">Выбрать тариф <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<a class="btn btn-glass" href="#apply">Подобрать сотрудника в штат</a>
+</div>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2460}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cat: 'ops', picked: {}, other: '', salary: 60000 };
+  }
+  fmt(n) {
+    return Math.round(n).toLocaleString('ru-RU');
+  }
+  renderVals() {
+    const s = this.state;
+    const data = {
+      ops: [
+        { n: 'Разбор почты', t: '' }, { n: 'Ответы на письма по шаблону', t: '' }, { n: 'Ведение календаря', t: '' },
+        { n: 'Планирование встреч', t: '' }, { n: 'Напоминания о делах и сроках', t: '' }, { n: 'Контроль поручений', t: '' },
+        { n: 'Звонки и уточнения', t: '' }, { n: 'Справка перед встречей', t: '' }, { n: 'Расшифровка голосовых и созвонов', t: '' },
+        { n: 'Итоги встреч', t: '' }, { n: 'Задачи в Todoist и аналогах', t: '' }, { n: 'Сделки в Битрикс24 и amoCRM', t: 'both' },
+        { n: 'Задачи в Notion, Trello, Asana', t: 'both' }, { n: 'Отчёты из рабочих систем', t: 'both' }
+      ],
+      research: [
+        { n: 'Поиск и сравнение предложений', t: '' }, { n: 'Подбор подрядчиков и услуг', t: '' }, { n: 'Сбор отзывов о компаниях', t: '' },
+        { n: 'Таблицы учёта', t: '' }, { n: 'Подготовка презентаций', t: '' }, { n: 'Копирайтинг', t: '' },
+        { n: 'Создание изображений с помощью ИИ', t: '' }, { n: 'Создание видео с помощью ИИ', t: '' }, { n: 'Сопровождение поездок', t: '' },
+        { n: 'Исследование рынка', t: 'both' }, { n: 'Анализ конкурентов', t: 'both' }, { n: 'Сводные отчёты', t: 'both' },
+        { n: 'Организация мероприятий', t: 'both' }
+      ],
+      docs: [
+        { n: 'Документы по шаблону', t: '' }, { n: 'Коммерческие предложения', t: '' }, { n: 'Договоры по шаблону', t: '' },
+        { n: 'Счета и акты', t: 'both' }, { n: 'Контроль оплат', t: 'both' }, { n: 'Сверка с подрядчиками', t: 'both' },
+        { n: 'Консультация бухгалтера', t: 'both' }, { n: 'Проверка договора юристом', t: 'both' }, { n: 'Претензии и ответы на них', t: 'both' },
+        { n: 'Проверка контрагентов', t: 'both' }, { n: 'Документооборот', t: 'bo' }, { n: 'Первичные документы', t: 'bo' },
+        { n: 'Связь с вашей бухгалтерией', t: 'bo' }, { n: 'Закупки и поставщики', t: 'bo' }
+      ],
+      people: [
+        { n: 'Ответы клиентам', t: '' }, { n: 'Контроль сроков подрядчиков', t: '' }, { n: 'Сбор обратной связи', t: '' },
+        { n: 'Описание вакансии', t: '' }, { n: 'Первичный отбор кандидатов', t: 'both' }, { n: 'Кадровые документы', t: 'both' },
+        { n: 'Регламенты и инструкции', t: 'both' }, { n: 'Подбор персонала', t: 'bo' }, { n: 'Адаптация новых сотрудников', t: 'bo' },
+        { n: 'Контроль поручений в команде', t: 'bo' }
+      ],
+      life: [
+        { n: 'Билеты и отели', t: '' }, { n: 'Маршрут для отпуска', t: '' }, { n: 'Бронирование ресторанов', t: '' },
+        { n: 'Запись к врачу', t: '' }, { n: 'Мастера и бытовые услуги', t: '' }, { n: 'Подарки и цветы', t: '' },
+        { n: 'Покупки и доставка', t: '' }, { n: 'Коммунальные платежи и штрафы', t: '' }, { n: 'Поиск няни или репетитора', t: '' },
+        { n: 'Семейный праздник', t: '' }, { n: 'Напоминания о днях рождения', t: '' }
+      ]
+    };
+    const names = { ops: 'Почта, календарь и связь', research: 'Поиск, контент и проекты', docs: 'Документы и деньги', people: 'Клиенты и команда', life: 'Личные дела' };
+    const tags = { biz: 'Бизнес', bo: 'Бэк-офис' };
+    let total = 0;
+    Object.keys(s.picked).forEach((k) => { if (s.picked[k]) total += 1; });
+    const cats = Object.keys(data).map((id) => {
+      const active = id === s.cat;
+      const count = data[id].filter((t, i) => s.picked[id + i]).length;
+      return {
+        name: names[id],
+        active: active,
+        hasCount: count > 0,
+        count: count,
+        pick: () => this.setState({ cat: id }),
+        style: 'display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font-size: 15px; font-weight: 600; border: 1px solid ' + (active ? '#121826' : 'rgba(255,255,255,0.9)') + '; background: ' + (active ? '#121826' : 'rgba(255,255,255,0.6)') + '; color: ' + (active ? '#FBF8F3' : '#121826'),
+        badge: 'display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 999px; font-size: 12px; font-weight: 700; background: ' + (active ? '#CFA86E' : '#121826') + '; color: ' + (active ? '#121826' : '#FBF8F3')
+      };
+    });
+    const items = data[s.cat].map((t, i) => {
+      const id = s.cat + i;
+      const on = !!s.picked[id];
+      const keys = t.t === 'both' ? ['biz', 'bo'] : (t.t === 'bo' ? ['bo'] : []);
+      const tagList = keys.map((k) => ({
+        label: tags[k],
+        style: 'padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; background: ' + (on ? 'rgba(255,255,255,0.16)' : (k === 'bo' ? '#121826' : '#E7CC9C')) + '; color: ' + (on ? '#EAD9BD' : (k === 'bo' ? '#EAD9BD' : '#5A4220'))
+      }));
+      return {
+        n: t.n,
+        on: on,
+        tags: tagList,
+        toggle: () => { const p = Object.assign({}, this.state.picked); p[id] = !p[id]; this.setState({ picked: p }); },
+        style: 'display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 15px; font-weight: 500; border: 1px solid ' + (on ? '#121826' : 'rgba(18,24,38,0.14)') + '; background: ' + (on ? '#121826' : 'rgba(255,255,255,0.7)') + '; color: ' + (on ? '#FBF8F3' : '#121826')
+      };
+    });
+    const sal = Number(s.salary);
+    const base = 40640;
+    const vals = [
+      { label: 'Зарплата', note: 'сумма по трудовому договору', v: sal, c: '#121826' },
+      { label: 'Страховые взносы', note: 'для малого и среднего бизнеса: 30% до 1,5 МРОТ, сверх — 15%', v: 0.3 * Math.min(sal, base) + 0.15 * Math.max(0, sal - base), c: '#8A6536' },
+      { label: 'Отпуска и больничные', note: 'в среднем 15% от зарплаты за год', v: sal * 0.15, c: '#B98B51' },
+      { label: 'Рабочее место и программы', note: 'ноутбук, связь, подписки — оценка', v: 10000, c: '#CFA86E' },
+      { label: 'Поиск и обучение', note: 'подбор и адаптация, разнесённые на два года', v: sal / 12, c: '#E7CC9C' }
+    ];
+    const sum = vals.reduce((a, b) => a + b.v, 0);
+    const parts = vals.map((x) => ({
+      label: x.label,
+      note: x.note,
+      value: this.fmt(x.v),
+      bar: 'height: 100%; width: ' + (x.v / sum * 100).toFixed(2) + '%; background: ' + x.c,
+      swatch: 'width: 12px; height: 12px; margin-top: 5px; border-radius: 50%; background: ' + x.c
+    }));
+    const tariffs = [
+      { name: 'Штатный сотрудник', price: sum, c: '#121826' },
+      { name: 'Бизнес', price: 69900, c: '#B98B51' },
+      { name: 'Дейли', price: 29900, c: '#CFA86E' },
+      { name: 'Старт', price: 19900, c: '#E7CC9C' }
+    ];
+    const maxP = Math.max(sum, 69900);
+    const compare = tariffs.map((t) => ({
+      name: t.name,
+      price: this.fmt(t.price),
+      bar: 'height: 10px; border-radius: 999px; width: ' + (t.price / maxP * 100).toFixed(2) + '%; background: ' + t.c
+    }));
+    try {
+      const sel = [];
+      Object.keys(data).forEach((cid) => data[cid].forEach((t, i) => { if (s.picked[cid + i]) sel.push(t.n); }));
+      window.__tbTasks = { list: sel, other: s.other || '' };
+    } catch (e) {}
+    const anyPicked = total > 0;
+    const hasOther = s.other.trim() !== '';
+    return {
+      cats: cats,
+      catName: names[s.cat],
+      items: items,
+      total: total,
+      other: s.other,
+      onOther: (e) => this.setState({ other: e.target.value }),
+      hasOther: hasOther,
+      hasAny: anyPicked || hasOther,
+      reset: () => this.setState({ picked: {}, other: '' }),
+      salary: sal,
+      salaryText: this.fmt(sal),
+      onSalary: (e) => this.setState({ salary: Number(e.target.value) }),
+      parts: parts,
+      totalText: this.fmt(sum),
+      ratio: (sum / sal).toFixed(1).replace('.', ','),
+      compare: compare
+    };
+  }
+}
+</script>
+</body>
+</html>
