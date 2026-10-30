@@ -33,13 +33,13 @@ a{color:#8A6536}a:hover{color:#121826}
 @media (prefers-reduced-motion:reduce){.open{animation:none}.pill,.chev{transition:none}}
 </style>
 </helmet>
-<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: transparent; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: visible">
 
-<div aria-hidden="true" style="position: absolute; left: -240px; top: -140px; width: 880px; height: 880px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.72) 0%, rgba(233,205,158,0) 66%)"></div>
-<div aria-hidden="true" style="position: absolute; right: -200px; top: 700px; width: 820px; height: 820px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 65%)"></div>
-<div aria-hidden="true" style="position: absolute; left: 200px; top: 1700px; width: 980px; height: 980px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.5) 0%, rgba(214,178,120,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: -240px; top: -140px; width: 880px; height: 880px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.72) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; right: -200px; top: 700px; width: 820px; height: 820px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 65%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: 200px; top: 1700px; width: 980px; height: 980px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.5) 0%, rgba(214,178,120,0) 66%)"></div>
 
-<section id="tariffs" style="position: relative; flex-grow: 1; padding: 120px 96px">
+<section id="tariffs" style="position: relative; flex-grow: 1; padding: 72px 96px 56px">
 <div style="display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 80px; align-items: end; margin-bottom: 52px">
 <h2 class="sf" style="margin: 0; font-size: 76px; line-height: 1; font-weight: 400; letter-spacing: -0.015em">Тарифы</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3C4250">Во всех тарифах, кроме «Старта», количество задач не ограничено. Нажмите «Задачи в тарифе», чтобы увидеть, что можно передать.</p>
@@ -133,14 +133,14 @@ a{color:#8A6536}a:hover{color:#121826}
 </div>
 <div class="glass" style="border-radius: 24px; padding: 26px 30px; display: flex; gap: 18px; align-items: flex-start">
 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#AD7F45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
-<span style="font-size: 15px; line-height: 1.6; color: #3C4250">Часы бухгалтера, юриста и специалиста по персоналу считаются по каждой задаче. Неиспользованные часы на следующий месяц не переносятся.</span>
+<span style="font-size: 15px; line-height: 1.6; color: #3C4250">Часы бухгалтера, юриста, HR-специалиста и ИИ-креатора считаются по каждой задаче. Неиспользованные часы на следующий месяц не переносятся.</span>
 </div>
 </div>
 </section>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2110}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2330}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -191,8 +191,12 @@ class Component extends DCLogic {
       { p: 'Задачи дольше 5 часов', v: ['в счёт часов', 'с доплатой', 'с доплатой', Y] },
       { p: 'Трекеры задач и календари', h: 'Todoist, Google Календарь и аналоги', v: [Y, Y, Y, Y] },
       { p: 'Рабочие системы компании', h: 'Битрикс24, amoCRM, Notion, Trello, Asana и аналоги', v: [N, N, Y, Y] },
-      { p: 'Бухгалтер, юрист, специалист по персоналу', v: [N, N, 'до 20 ч в месяц', 'до 40 ч в месяц'] },
-      { p: 'Рекрутер', v: [N, N, N, Y] },
+      { p: 'Бухгалтер', h: 'консультации и текущие бухгалтерские вопросы', v: [N, N, Y, Y] },
+      { p: 'Юрист', h: 'договоры, претензии, проверка контрагентов', v: [N, N, Y, Y] },
+      { p: 'HR-специалист', h: 'вакансии, отбор кандидатов, кадровые документы', v: [N, N, Y, Y] },
+      { p: 'ИИ-креатор', h: 'видео, визуал и контент с помощью нейросетей', v: [N, N, Y, Y] },
+      { p: 'Часы специалистов', h: 'считаются по каждой задаче', v: [N, N, 'до 20 ч в месяц', 'до 40 ч в месяц'] },
+      { p: 'Рекрутер', h: 'подбор сотрудников под ключ', v: [N, N, N, Y] },
       { p: 'Персональный менеджер', v: [N, N, N, Y] },
       { p: 'Вечера и выходные', h: 'срочные задачи', v: [N, N, 'до 2 в неделю', 'до 5 в неделю'] },
       { p: 'Пользователей в тарифе', v: ['1', '1', '2', 'до 3'] },
@@ -232,7 +236,7 @@ class Component extends DCLogic {
           { title: 'Деньги', items: ['Счета и акты', 'Контроль оплат', 'Сверка с подрядчиками'] },
           { title: 'Проекты', items: ['Исследование рынка и конкурентов', 'Сводные отчёты', 'Организация мероприятий'] },
           { title: 'Команда', items: ['Регламенты и инструкции', 'Кадровые документы', 'Первичный отбор кандидатов'] },
-          { title: 'Специалисты — до 20 часов', items: ['Консультация бухгалтера', 'Проверка договора юристом', 'Претензии и ответы на них', 'Проверка контрагентов'] }
+          { title: 'Специалисты — до 20 часов в месяц', items: ['Бухгалтер — консультации и текущие вопросы', 'Юрист — проверка договоров и претензии', 'HR-специалист — вакансии и первичный отбор кандидатов', 'ИИ-креатор — видео, визуал и контент с помощью нейросетей'] }
         ]
       },
       bo: {
@@ -241,7 +245,7 @@ class Component extends DCLogic {
         groups: [
           { title: 'Операционный офис', items: ['Документооборот', 'Закупки и поставщики', 'Контроль поручений в команде'] },
           { title: 'Люди', items: ['Подбор персонала', 'Адаптация новых сотрудников', 'График отпусков'] },
-          { title: 'Бухгалтерия и право — до 40 часов', items: ['Первичные документы', 'Связь с вашей бухгалтерией', 'Договоры и претензии'] },
+          { title: 'Специалисты — до 40 часов в месяц', items: ['Бухгалтер — первичные документы и связь с вашей бухгалтерией', 'Юрист — договоры, претензии, проверка контрагентов', 'HR-специалист — кадровые документы и адаптация сотрудников', 'ИИ-креатор — контент и визуал для вашего бизнеса', 'Рекрутер — подбор персонала под ключ'] },
           { title: 'Персональный менеджер', items: ['Следит за сроками по всем задачам', 'Готовит сводку по итогам недели', 'Помогает расставить приоритеты'] }
         ]
       }

@@ -49,13 +49,13 @@ a{color:#8A6536}a:hover{color:#121826}
 @media (prefers-reduced-motion:reduce){.rise,.floaty,.marq,.marqr,.msg,.tdot,.open{animation:none}}
 </style>
 </helmet>
-<div style="position: relative; width: 390px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
-<div aria-hidden="true" style="position: absolute; left: -200px; top: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
-<div aria-hidden="true" style="position: absolute; left: 150px; top: 500px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.6) 0%, rgba(214,178,120,0) 66%)"></div>
-<div aria-hidden="true" style="position: absolute; left: -200px; top: 1120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 66%)"></div>
-<div aria-hidden="true" style="position: absolute; left: 150px; top: 1740px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
+<div style="position: relative; width: 390px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: transparent; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: visible">
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: -200px; top: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: 150px; top: 500px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.6) 0%, rgba(214,178,120,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: -200px; top: 1120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.9) 0%, rgba(222,228,238,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: 150px; top: 1740px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.8) 0%, rgba(233,205,158,0) 66%)"></div>
 
-<section id="apply" style="position: relative; flex-grow: 1; padding: 56px 12px 40px; display: flex; flex-direction: column; gap: 18px">
+<section id="apply" style="position: relative; flex-grow: 1; padding: 44px 12px 32px; display: flex; flex-direction: column; gap: 18px">
 <div style="padding: 0 8px; display: flex; flex-direction: column; gap: 12px">
 <h2 class="h2">Подберём ассистента <span class="it">сегодня</span></h2>
 <p class="lead">Пять коротких вопросов — и мы вернёмся с подходящим тарифом и планом, что передать в первую очередь.</p>
@@ -127,7 +127,10 @@ a{color:#8A6536}a:hover{color:#121826}
 </div>
 </sc-if>
 <sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
-<p role="alert" style="margin: 0; padding: 14px 18px; border-radius: 16px; background: #F4ECDD; font-size: 14px; line-height: 1.55; color: #3C4250">Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в <a href="https://t.me/boriseyshestvo" target="_blank" rel="noopener noreferrer">Telegram</a> — ответим так же быстро.</p>
+<div role="alert" style="display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; border-radius: 16px; background: #F4ECDD">
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #3C4250">Не получилось отправить заявку автоматически. Нажмите кнопку ниже — заявка откроется в Telegram уже заполненной, останется только отправить.</p>
+<a class="btn" href="{{ tgLeadHref }}" target="_blank" rel="noopener noreferrer" style="align-self: stretch; justify-content: space-between">Отправить заявку в Telegram <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+</div>
 </sc-if>
 <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px">
@@ -164,14 +167,14 @@ a{color:#8A6536}a:hover{color:#121826}
 </div>
 <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 10px; font-size: 12px; line-height: 1.6; color: #A8A193">
 <span>Босс команды (TEAM BOSS)</span>
-<span>ИП Борисова Татьяна Вячеславовна, ИНН [номер], ОГРНИП [номер]</span>
+<span>ИП Борисова Татьяна Вячеславовна, ИНН 365205279574, ОГРНИП 324366800076324</span>
 <a href="https://docs.google.com/document/d/19LpTYeDs_ywwY1TavvVb2xnGSABCAoll2lGd9gUBaf0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: #CDBFA8; text-decoration: none">Договор оферты</a>
 </div>
 </footer>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1750}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1740}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -219,6 +222,14 @@ class Component extends DCLogic {
     const pct = s.done ? 100 : Math.round(((s.step + 1) / 5) * 100);
     let cat = { list: [], other: '' };
     try { if (window.__tbTasks) cat = window.__tbTasks; } catch (e) {}
+    const leadRows = [
+      ['Имя', s.name], ['Телефон', s.phone], ['Где удобнее общаться', s.method],
+      ['Хочу передать', Object.keys(s.areas).filter((k) => s.areas[k]).join(', ')], ['Другое', s.other],
+      ['Задачи из каталога', (cat.list || []).join('; ')], ['Своя задача', cat.other],
+      ['Время на задачи в неделю', s.hours], ['Когда нужен ассистент', s.when], ['Кто я', s.role],
+      ['Подходящий тариф', recMap[r][0] + ' — ' + recMap[r][1] + ' ₽']
+    ].filter((x) => x[1] && String(x[1]).trim());
+    const tgLeadHref = 'https://t.me/boriseyshestvo?text=' + encodeURIComponent('Здравствуйте! Заявка с сайта.\n' + leadRows.map((x) => x[0] + ': ' + x[1]).join('\n'));
     return {
       steps: steps,
       done: s.done,
@@ -248,6 +259,7 @@ class Component extends DCLogic {
       blocked: !ready[s.step] || s.sending,
       nextLabel: s.sending ? 'Отправляем…' : (s.step === 4 ? 'Отправить заявку' : 'Дальше'),
       sendError: s.sendError,
+      tgLeadHref: tgLeadHref,
       fromCatalog: cat.list.length > 0,
       catCount: cat.list.length,
       next: () => {

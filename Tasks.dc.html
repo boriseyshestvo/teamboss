@@ -33,13 +33,13 @@ a{color:#8A6536}a:hover{color:#121826}
 @media (prefers-reduced-motion:reduce){.pop{animation:none}.btn,.chip,.tab,.bar{transition:none}}
 </style>
 </helmet>
-<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FBF8F3; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: hidden">
+<div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: transparent; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: visible">
 
-<div aria-hidden="true" style="position: absolute; right: -240px; top: -120px; width: 860px; height: 860px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.7) 0%, rgba(233,205,158,0) 66%)"></div>
-<div aria-hidden="true" style="position: absolute; left: -260px; top: 520px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.85) 0%, rgba(222,228,238,0) 65%)"></div>
-<div aria-hidden="true" style="position: absolute; left: 300px; top: 1350px; width: 980px; height: 980px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.5) 0%, rgba(214,178,120,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; right: -240px; top: -120px; width: 860px; height: 860px; border-radius: 50%; background: radial-gradient(circle, rgba(233,205,158,0.7) 0%, rgba(233,205,158,0) 66%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: -260px; top: 520px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(222,228,238,0.85) 0%, rgba(222,228,238,0) 65%)"></div>
+<div aria-hidden="true" style="position: absolute; z-index: -1; pointer-events: none; left: 300px; top: 1350px; width: 980px; height: 980px; border-radius: 50%; background: radial-gradient(circle, rgba(214,178,120,0.5) 0%, rgba(214,178,120,0) 66%)"></div>
 
-<section id="tasks" style="position: relative; padding: 120px 96px 90px">
+<section id="tasks" style="position: relative; padding: 72px 96px 48px">
 <div style="display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 80px; align-items: end; margin-bottom: 52px">
 <div style="display: flex; flex-direction: column; gap: 22px">
 <h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Какие задачи можно <span style="font-style: italic; color: #AD7F45">передать ассистенту</span></h2>
@@ -89,14 +89,14 @@ a{color:#8A6536}a:hover{color:#121826}
 <sc-if value="{{ hasAny }}" hint-placeholder-val="{{ false }}">
 <button class="link" onClick="{{ reset }}">Сбросить</button>
 </sc-if>
-<a class="btn" href="#apply">Добавить в заявку <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+<a class="btn" href="{{ tgTasksHref }}" target="_blank" rel="noopener noreferrer">Передать задачи ассистенту <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
 </div>
 </div>
 </div>
 </div>
 </section>
 
-<section style="position: relative; flex-grow: 1; padding: 100px 96px 120px">
+<section style="position: relative; flex-grow: 1; padding: 72px 96px 56px">
 <div style="display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 80px; align-items: end; margin-bottom: 52px">
 <h2 class="sf" style="margin: 0; font-size: 66px; line-height: 1.02; font-weight: 400; letter-spacing: -0.015em">Сколько на самом деле стоит <span style="font-style: italic; color: #AD7F45">свой ассистент в штате</span></h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3C4250">Зарплата — только часть расходов. Передвиньте ползунок и посмотрите, из чего складывается полная сумма.</p>
@@ -146,7 +146,7 @@ a{color:#8A6536}a:hover{color:#121826}
 <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #3C4250">Штатный сотрудник нужен не всем: если задач на полный день нет, вы платите за время, когда он ничем не занят. А если вам нужен именно свой человек — подберём его, пропишем инструкции и поможем ввести в работу.</p>
 <div style="display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap">
 <a class="btn" href="#tariffs">Выбрать тариф <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
-<a class="btn btn-glass" href="#apply">Подобрать сотрудника в штат</a>
+<a class="btn btn-glass" href="https://t.me/boriseyshestvo?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0%20%D0%B2%20%D1%88%D1%82%D0%B0%D1%82." target="_blank" rel="noopener noreferrer">Подобрать сотрудника в штат</a>
 </div>
 </div>
 </div>
@@ -154,7 +154,7 @@ a{color:#8A6536}a:hover{color:#121826}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2460}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2270}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -269,6 +269,16 @@ class Component extends DCLogic {
     } catch (e) {}
     const anyPicked = total > 0;
     const hasOther = s.other.trim() !== '';
+    const tgSel = [];
+    Object.keys(data).forEach((cid) => data[cid].forEach((t, i) => { if (s.picked[cid + i]) tgSel.push(t.n); }));
+    const tgOther = (s.other || '').trim();
+    let tgText = 'Здравствуйте! Хочу передать задачи ассистенту';
+    if (tgSel.length || tgOther) {
+      tgText += ':\n' + tgSel.map((n) => '— ' + n).join('\n') + (tgOther ? (tgSel.length ? '\n' : '') + '— ' + tgOther : '');
+    } else {
+      tgText += '. Подскажите, с чего начать?';
+    }
+    const tgTasksHref = 'https://t.me/boriseyshestvo?text=' + encodeURIComponent(tgText);
     return {
       cats: cats,
       catName: names[s.cat],
@@ -277,6 +287,7 @@ class Component extends DCLogic {
       other: s.other,
       onOther: (e) => this.setState({ other: e.target.value }),
       hasOther: hasOther,
+      tgTasksHref: tgTasksHref,
       hasAny: anyPicked || hasOther,
       reset: () => this.setState({ picked: {}, other: '' }),
       salary: sal,
