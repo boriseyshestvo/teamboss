@@ -30,6 +30,7 @@ a{color:#8A6536}a:hover{color:#121826}
 .step{animation:step .45s cubic-bezier(.2,.7,.2,1) both}
 :focus-visible{outline:2px solid #8A6536;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.step{animation:none}.btn,.opt{transition:none}}
+.btn,.pill,.ghost,.close,.toggle,.btn-glass{justify-content:center;text-align:center}.btn p{margin:0}.toggle{white-space:nowrap}
 </style>
 </helmet>
 <div style="position: relative; width: 1440px; height: auto; box-sizing: border-box; display: flex; flex-direction: column; background: transparent; color: #121826; font-family: 'Manrope', system-ui, sans-serif; overflow: visible">
@@ -143,8 +144,9 @@ a{color:#8A6536}a:hover{color:#121826}
 <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
 <div class="step" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px">
 <span style="width: 64px; height: 64px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #E7CC9C, #B98B51); color: #121826; box-shadow: 0 16px 30px -12px rgba(140,98,40,0.6)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
-<p class="sf" style="margin: 0; font-size: 48px; line-height: 1.05">Заявка отправлена</p>
-<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.65; color: #3C4250">Свяжемся с вами в течение 15 минут в рабочее время — с понедельника по пятницу, с 9:00 до 18:00 по Москве.</p>
+<p class="sf" style="margin: 0; font-size: 46px; line-height: 1.05">Осталось нажать «Отправить»</p>
+<p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.65; color: #3C4250">Мы открыли чат с менеджером в Telegram — ваша заявка уже вписана в сообщение. Нажмите «Отправить», и менеджер свяжется с вами в течение 15 минут в рабочее время — с понедельника по пятницу, с 9:00 до 18:00 по Москве.</p>
+<a class="btn" href="{{ tgLeadHref }}" target="_blank" rel="noopener noreferrer" style="align-self: flex-start">Открыть Telegram ещё раз <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
 <div style="padding: 22px 26px; border-radius: 22px; background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.95); display: flex; flex-direction: column; gap: 6px; max-width: 560px">
 <span style="font-size: 14px; color: #5B6170">Судя по вашим ответам, вам подойдёт тариф</span>
 <span class="sf" style="font-size: 34px; line-height: 1.1">«{{ rec }}» <span style="font-size: 22px; color: #8A6536">— {{ recPrice }} ₽ в месяц</span></span>
@@ -291,33 +293,24 @@ class Component extends DCLogic {
       noBack: s.step === 0,
       back: () => this.setState({ step: Math.max(0, this.state.step - 1) }),
       blocked: !ready[s.step] || s.sending,
-      nextLabel: s.sending ? 'Отправляем…' : (s.step === 4 ? 'Отправить заявку' : 'Дальше'),
+      nextLabel: s.step === 4 ? 'Отправить заявку в Telegram' : 'Дальше',
       sendError: s.sendError,
       tgLeadHref: tgLeadHref,
       fromCatalog: cat.list.length > 0,
       catCount: cat.list.length,
       next: () => {
-        if (!ready[this.state.step] || this.state.sending) return;
+        if (!ready[this.state.step]) return;
         if (this.state.step !== 4) { this.setState({ step: this.state.step + 1 }); return; }
-        const st = this.state;
         let host = '';
         try { host = window.location.hostname || ''; } catch (e) {}
-        if (!host || /claude\.ai|claudeusercontent|anthropic/.test(host)) { this.setState({ done: true }); return; }
-        let catNow = { list: [], other: '' };
-        try { if (window.__tbTasks) catNow = window.__tbTasks; } catch (e) {}
-        const payload = {
-          name: st.name, phone: st.phone, method: st.method,
-          areas: Object.keys(st.areas).filter((k) => st.areas[k]), other: st.other,
-          hours: st.hours, when: st.when, role: st.role,
-          tasks: catNow.list, tasksOther: catNow.other,
-          rec: recMap[r][0] + ' — ' + recMap[r][1] + ' ₽',
-          version: 'desktop', page: window.location.href, website: ''
-        };
-        this.setState({ sending: true, sendError: false });
-        fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-          .then((res) => res.ok ? res.json() : Promise.reject(new Error('bad status')))
-          .then((j) => { if (!j || !j.ok) throw new Error('not ok'); this.setState({ sending: false, done: true }); })
-          .catch(() => this.setState({ sending: false, sendError: true }));
+        const preview = !host || /claude\.ai|claudeusercontent|anthropic/.test(host);
+        if (!preview) {
+          let w = null;
+          try { w = window.open(tgLeadHref, '_blank'); } catch (e) {}
+          if (w) { try { w.opener = null; } catch (e) {} }
+          else { try { window.location.href = tgLeadHref; } catch (e) {} }
+        }
+        this.setState({ done: true });
       },
       rec: recMap[r][0],
       recPrice: recMap[r][1]
