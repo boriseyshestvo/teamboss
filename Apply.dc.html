@@ -147,11 +147,6 @@ a{color:#8A6536}a:hover{color:#121826}
 <p class="sf" style="margin: 0; font-size: 46px; line-height: 1.05">Осталось нажать «Отправить»</p>
 <p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.65; color: #3C4250">Мы открыли чат с менеджером в Telegram — ваша заявка уже вписана в сообщение. Нажмите «Отправить», и менеджер свяжется с вами в течение 15 минут в рабочее время — с понедельника по пятницу, с 9:00 до 18:00 по Москве.</p>
 <a class="btn" href="{{ tgLeadHref }}" target="_blank" rel="noopener noreferrer" style="align-self: flex-start">Открыть Telegram ещё раз <span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
-<div style="padding: 22px 26px; border-radius: 22px; background: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.95); display: flex; flex-direction: column; gap: 6px; max-width: 560px">
-<span style="font-size: 14px; color: #5B6170">Судя по вашим ответам, вам подойдёт тариф</span>
-<span class="sf" style="font-size: 34px; line-height: 1.1">«{{ rec }}» <span style="font-size: 22px; color: #8A6536">— {{ recPrice }} ₽ в месяц</span></span>
-<span style="font-size: 14px; color: #5B6170">Окончательно выберем вместе на созвоне</span>
-</div>
 <a class="ghost" href="#tariffs" style="align-self: flex-start">Посмотреть тарифы</a>
 </div>
 </sc-if>
@@ -262,8 +257,7 @@ class Component extends DCLogic {
       ['Имя', s.name], ['Телефон', s.phone], ['Где удобнее общаться', s.method],
       ['Хочу передать', Object.keys(s.areas).filter((k) => s.areas[k]).join(', ')], ['Другое', s.other],
       ['Задачи из каталога', (cat.list || []).join('; ')], ['Своя задача', cat.other],
-      ['Время на задачи в неделю', s.hours], ['Когда нужен ассистент', s.when], ['Кто я', s.role],
-      ['Подходящий тариф', recMap[r][0] + ' — ' + recMap[r][1] + ' ₽']
+      ['Время на задачи в неделю', s.hours], ['Когда нужен ассистент', s.when], ['Кто я', s.role]
     ].filter((x) => x[1] && String(x[1]).trim());
     const tgLeadHref = 'https://t.me/boriseyshestvo?text=' + encodeURIComponent('Здравствуйте! Заявка с сайта.\n' + leadRows.map((x) => x[0] + ': ' + x[1]).join('\n'));
     return {
